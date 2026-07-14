@@ -108,7 +108,6 @@
 
     <section>
         <div class="container">
-
             <div class="row">
                 @foreach ($current_investment as $p)
 

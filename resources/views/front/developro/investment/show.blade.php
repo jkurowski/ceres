@@ -5,7 +5,13 @@
     @section('seo_title', $page->meta_title)
     @section('seo_description', $page->meta_description)
     @section('pageheader')
-        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name, 'pageDesc' => $investment->name])
+        @include('layouts.partials.page-header', [
+            'page' => $page,
+            'header' => asset('img/pageheader.jpg'),
+            'h1' => $investment->name,
+            'pageDesc' => $investment->name,
+            'class' => 'sm'
+        ])
     @stop
 @endif
 

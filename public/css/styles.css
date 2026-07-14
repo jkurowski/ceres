@@ -601,6 +601,11 @@ header .header-cta a:hover {
   color: white;
   font-size: 18px;
 }
+.bttn.bttn-xs {
+  font-size: 14px;
+  padding: 10px;
+  height: 42px;
+}
 .bttn.bttn-gold {
   background: #C4B387;
 }
@@ -837,8 +842,16 @@ footer .social-media a:hover {
   align-items: center;
   border-radius: 16px;
 }
+.page-header.sm {
+  height: 200px;
+  overflow: hidden;
+}
+.page-header.sm .page-heager-content {
+  width: 100%;
+}
 .page-header.no-image {
   height: 270px;
+  overflow: hidden;
 }
 .page-header:after {
   background: linear-gradient(90deg, #ffffff 26%, rgba(255, 255, 255, 0) 100%);
@@ -1073,5 +1086,211 @@ footer .social-media a:hover {
 }
 .privacy-policy a:hover {
   text-decoration: underline;
+}
+#submenu {
+  padding: 40px 0;
+}
+#submenu nav {
+  background: transparent;
+}
+.plan-info {
+  background: #75543f;
+  box-shadow: 0 0 12.8px 4px #0000000d;
+  border-radius: 8px;
+  padding: 13px;
+  text-align: center;
+  margin-bottom: -32px;
+  position: relative;
+  z-index: 20;
+  font-size: 26px;
+  font-weight: 600;
+  font-family: "Abhaya Libre", serif;
+  color: white;
+}
+/* Nowa list
+================================================== */
+.property-list-item-name span {
+  color: #024282;
+  font-weight: 600;
+  font-size: 12px;
+}
+.text-highlighted {
+  color: #db3434;
+}
+.promo-price {
+  color: #db3434 !important;
+}
+.promo-info {
+  background: #fbc000;
+  text-align: center;
+  color: white;
+  padding: 6px 0px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.property-list-item-sold .property-list-item-col-1,
+.property-list-item-sold .property-list-item-col-2,
+.property-list-item-sold .property-list-item-col-3,
+.property-list-item-sold .property-list-item-col-4,
+.property-list-item-sold .half-2 {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+.property-list-item-sold .btn {
+  filter: grayscale(100%);
+  opacity: 1;
+}
+/* List view */
+.list-layout .half-2 {
+  display: none;
+}
+.list-layout .half-1 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.list-layout .invest-card-list {
+  padding: 15px 20px;
+  box-shadow: 0 2px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  transition: box-shadow 0.3s linear;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+.list-layout .invest-card-list:hover {
+  background: white;
+  box-shadow: 0 2px 35px rgba(0, 0, 0, 0.15);
+}
+/* Grid view */
+.grid-layout .col-2,
+.grid-layout .col-4 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.grid-layout .invest-card-list {
+  padding: 20px;
+  width: calc(100% - 5px);
+}
+.grid-layout .property-list-item-info {
+  font-size: 12px;
+  padding: 0 12px !important;
+}
+.grid-layout .property-list-item-city {
+  padding: 0 12px !important;
+}
+.grid-layout .property-list-item-name {
+  margin-bottom: 10px;
+}
+.grid-layout .property-list-item-status {
+  margin: 10px 0;
+}
+.grid-layout .btn {
+  margin-top: 10px;
+}
+@media (max-width: 1453.98px) {
+  .list-layout .property-list-item-info {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .list-layout .property-list-item-info {
+    font-size: 11px;
+  }
+  .h3 {
+    font-size: 24px;
+  }
+  .btn {
+    padding: 9px 0;
+  }
+  .invest-card .btn {
+    padding: 9px 30px;
+  }
+}
+@media (max-width: 991.98px) {
+  .list-layout .property-list-item-col-1,
+  .list-layout .property-list-item-col-2,
+  .list-layout .property-list-item-col-3,
+  .list-layout .property-list-item-col-4,
+  .list-layout .property-list-item-col-5 {
+    flex: 0 0 auto;
+  }
+  .list-layout .property-list-item-col-1,
+  .list-layout .property-list-item-col-3 {
+    width: 25%;
+  }
+  .list-layout .property-list-item-col-2 {
+    width: 50%;
+  }
+  .list-layout .property-list-item-col-4 {
+    width: 60%;
+    margin-top: 15px;
+  }
+  .list-layout .property-list-item-col-5 {
+    width: 40%;
+    margin-top: 15px;
+  }
+  .list-layout .invest-card-list {
+    padding: 15px;
+  }
+  .grid-layout .col-6.half-1,
+  .grid-layout .col-6.half-2 {
+    width: 100%;
+  }
+  .grid-layout .col-6.half-2 {
+    order: 1;
+  }
+  .grid-layout .col-6.half-1 {
+    order: 2;
+    margin-top: 10px;
+  }
+  .grid-layout .property-list-item-col-3 {
+    margin-top: 8px;
+  }
+}
+@media (max-width: 767.98px) {
+  .list-layout .property-list-item-col-1 {
+    width: 35%;
+  }
+  .list-layout .property-list-item-col-2 {
+    width: 65%;
+  }
+  .list-layout .property-list-item-col-3,
+  .list-layout .property-list-item-col-4,
+  .list-layout .property-list-item-col-5 {
+    width: 33.3333%;
+    margin-top: 15px;
+  }
+  .list-layout .invest-card-list {
+    padding: 15px;
+  }
+}
+@media (max-width: 575.98px) {
+  .list-layout .property-list-item-col-1,
+  .list-layout .property-list-item-col-2 {
+    width: 100%;
+  }
+  .list-layout .property-list-item-col-2 {
+    margin-top: 8px;
+  }
+  .list-layout .property-list-item-col-3,
+  .list-layout .property-list-item-col-4 {
+    width: 50%;
+    margin-top: 8px;
+  }
+  .list-layout .property-list-item-col-5 {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .list-layout .invest-card-list {
+    padding: 15px;
+  }
+  .list-layout .h3 {
+    font-size: 21px;
+  }
+  .list-layout .small {
+    font-size: 11px;
+  }
+  .grid-layout {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -29,7 +29,14 @@
 
 @section('content')
     <main>
-        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name, 'pageDesc' => $investment->name])
+        @include('layouts.partials.page-header', [
+            'page' => $page,
+            'header' => asset('img/pageheader.jpg'),
+            'h1' => $investment->name,
+            'pageDesc' => $investment->name,
+            'class' => 'sm'
+            ])
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -38,9 +45,14 @@
             </div>
         </div>
 
-        <section class="pb-0">
+        <section class="p-0">
             <div class="container">
                 <div class="row justify-content-center">
+                    <div class="col-8">
+                        <div class="plan-info">
+                            <p>Z planu inwestycji wybierz budynek, lub skorzystaj z wyszukiwarki</p>
+                        </div>
+                    </div>
                     <div class="col-12">
                         @if($investment->show_properties == 1)
                             @if($investment->plan)
@@ -191,7 +203,7 @@
                 </div>
                 <div class="row mt-30">
                     <div class="col-12">
-                        <div id="layout-container" class="container list-layout">
+                        <div id="layout-container" class="list-layout">
                             @foreach($properties as $index => $p)
                                 <x-property-new-list-item :p="$p" :index="$index" :sort="$sort"/>
                             @endforeach
