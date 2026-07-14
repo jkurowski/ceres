@@ -1,0 +1,335 @@
+@extends('layouts.homepage', ['body_class' => 'homepage'])
+
+@section('content')
+    <div id="hero">
+        <ul class="list-unstyled mb-0">
+            <li>
+                <div class="hero-apla">
+                    <div class="hero-apla-content">
+                        <span>JABŁONNA KOŁO WARSZAWY</span>
+                        <h2>Sosnowy Zakątek</h2>
+                        <a href="#" class="bttn bttn-gold d-inline-flex bttn-arrow">Zobacz inwestycje<img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35"></a>
+                    </div>
+                </div>
+                <img src="{{ asset('img/slider-1.jpg') }}" alt="" class="hero-img">
+            </li>
+            <li>
+                <div class="hero-apla">
+                    <div class="hero-apla-content">
+                        <span>JABŁONNA KOŁO WARSZAWY</span>
+                        <h2>Sosnowy Zakątek</h2>
+                        <a href="#" class="bttn bttn-gold d-inline-flex bttn-arrow">Zobacz inwestycje<img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35"></a>
+                    </div>
+                </div>
+                <img src="{{ asset('img/slider-2.jpg') }}" alt="" class="hero-img">
+            </li>
+        </ul>
+    </div>
+
+
+    <main>
+        <section class="offer-search pb-0">
+            <div class="container">
+                <form action="/mieszkania" method="get">
+                    <input type="hidden" name="invest" value="">
+                    <input type="hidden" name="rooms" value="">
+                    <input type="hidden" name="area" value="">
+                    <input type="hidden" name="floor" value="">
+                    <input type="hidden" name="price" value="">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-lg">
+                            <div class="search-field">
+                                <label for="invest">Inwestycje</label>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="invest">
+                                        Wszystkie
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-value="1">Inwestycja 1</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="2">Inwestycja 2</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="3">Inwestycja 3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="search-field">
+                                <label for="rooms">Liczba pokoi</label>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="rooms">
+                                        Wszystkie
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-value="1">1</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="2">2</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="3">3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg">
+                            <div class="search-field">
+                                <label for="area">Powierzchnia</label>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="area">
+                                        Wszystkie
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-value="1">1</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="2">2</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="3">3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg">
+                            <div class="search-field">
+                                <label for="floor">Piętro</label>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="floor">
+                                        Wszystkie
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-value="1">1</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="2">2</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="3">3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg">
+                            <div class="search-field border-0">
+                                <label for="price">Cena</label>
+                                <div class="dropdown mt-2">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="price">
+                                        Wszystkie
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-value="1">1</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="2">2</a></li>
+                                        <li><a class="dropdown-item" href="#" data-value="3">3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                            <button type="submit" class="bttn bttn-icon bttn-brown" aria-label="Szukaj mieszkań">
+                                <img src="{{ asset('img/svg/search.svg') }}" alt="" width="32" height="32">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="mt-150">
+            <div class="container">
+                <div class="row section-header">
+                    <div class="col-12">
+                        <h2><img src="{{ asset('img/square-point.svg') }}" alt="">NASZA OFERTA</h2>
+                    </div>
+                    <div class="col-6">
+                        <h3>Inwestycje w sprzedaży</h3>
+                    </div>
+                    <div class="col-6">
+                        <p>Wybierz spośród naszych aktualnych inwestycji i znajdź idealne miejsce dla siebie i swojej rodziny</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="invest-list-item radius-8">
+                            <span class="invest-list-status">W SPRZEDAŻY</span>
+                            <a href="">
+                                <img src="{{ asset('img/wiz-21.jpg') }}" alt="" class="radius-8">
+                            </a>
+                            <div class="invest-list-apla">
+                                <div class="row">
+                                    <div class="col-6 d-flex align-items-center">
+                                        <div>
+                                            <h2><a href="">Nazwa inwestycji</a></h2>
+                                            <a href="" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zobacz inwestycje <img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="23" height="24"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-6 pb-3">
+                                                <div class="d-inline-flex align-items-center invest-list-label">
+                                                    <img src="{{ asset('img/svg/marker.svg') }}" alt="" width="27" height="27">
+
+                                                    <div>
+                                                        <div class="small text-uppercase">Jabłonna</div>
+                                                        <div class="fw-bold">ul. Marmurowa 30</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 pb-3">
+                                                <div class="d-inline-flex align-items-center invest-list-label">
+                                                    <img src="{{ asset('img/svg/calendar.svg') }}" alt="" width="27" height="27">
+
+                                                    <div>
+                                                        <div class="small text-uppercase">TERMIN ODDANIA:</div>
+                                                        <div class="fw-bold">IV kwartał 2025</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-inline-flex align-items-center invest-list-label">
+                                                    <img src="{{ asset('img/svg/area.svg') }}" alt="" width="27" height="27">
+
+                                                    <div>
+                                                        <div class="small text-uppercase">ZAKRES METRAŻU:</div>
+                                                        <div class="fw-bold">31 - 80 m<sup>2</sup></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-inline-flex align-items-center invest-list-label">
+                                                    <img src="{{ asset('img/svg/price.svg') }}" alt="" width="27" height="27">
+
+                                                    <div>
+                                                        <div class="small text-uppercase">CENY OD:</div>
+                                                        <div class="fw-bold">805.516,00 zł</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row section-header">
+                    <div class="col-12">
+                        <h2><img src="{{ asset('img/square-point.svg') }}" alt="">MAPA INWESTYCJI</h2>
+                    </div>
+                    <div class="col-6">
+                        <h3>Dobry adres <br><span>dla lepszego życia</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+
+        <section class="pb-0">
+            <div class="container">
+                <div class="row section-header">
+                    <div class="col-12">
+                        <h2><img src="{{ asset('img/square-point.svg') }}" alt="">O FIRMIE</h2>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="after-line">Rodzinna firma deweloperska <br><span>z doświadczeniem</span></h3>
+
+                        <ul class="list-unstyled mb-0 features-list">
+                            <li>
+              <span>
+                <img src="{{ asset('img/svg/family-buissness.svg') }}" alt="" width="59" height="59">
+              </span>
+
+                                <div class="content">
+                                    <h3>Rodzinny deweloper</h3>
+                                    <p>Kameralne budownictwo mieszkaniowe realizowane z dbałością o jakość, bezpieczeństwo i detale</p>
+                                </div>
+                            </li>
+
+                            <li>
+              <span>
+                <img src="{{ asset('img/svg/clipboard.svg') }}" alt="" width="59" height="59">
+              </span>
+
+                                <div class="content">
+                                    <h3>Bezpieczna realizacja etapami</h3>
+                                    <p>Przemyślany rozwój projektów i przejrzysty proces zakupu dla klientów</p>
+                                </div>
+                            </li>
+
+                            <li>
+              <span>
+                <img src="{{ asset('img/svg/map-marker.svg') }}" alt="" width="59" height="59">
+              </span>
+
+                                <div class="content">
+                                    <h3>Sprawdzone lokalizacje</h3>
+                                    <p>Inwestycje rozwijane w Jabłonnie i na warszawskiej Białołęce</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="o-firmie.html" class="bttn bttn-sm bttn-brown-outline d-inline-flex bttn-arrow mt-5">Więcej o firmie<img src="{{ asset('img/svg/right-arrow-brown.svg') }}" alt="" width="33" height="35" class="ms-5"></a>
+                    </div>
+                    <div class="col-6">
+                        <div class="row h-100">
+                            <div class="col-5 d-flex align-items-end">
+                                <img src="{{ asset('img/rodzinna-firma-1.jpg') }}" alt="">
+                            </div>
+                            <div class="col-7 d-flex align-items-end position-relative">
+                                <img src="{{ asset('img/rodzinna-firma-2.jpg') }}" alt="" class="mb-100">
+                                <div class="family-count">
+                                    <div class="family-counter">
+                                        <img src="{{ asset('img/svg/counter.svg') }}" alt="">383
+                                    </div>
+                                    <h3>zrealizowanych mieszkań</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row section-header">
+                    <div class="col-12">
+                        <h2><img src="{{ asset('img/square-point.svg') }}" alt="">PROMOCJE</h2>
+                    </div>
+                    <div class="col-6">
+                        <h3>Aktualne promocje</h3>
+                    </div>
+                    <div class="col-6">
+                        <p>Być może Twoje wymarzone mieszkanie jest w super promocyjnej cenie? <br>Sprawdź to!</p>
+                    </div>
+                </div>
+                <div class="row gap-4">
+                    <div class="propety-item radius-8 p-0">
+                        <a href="">
+                            <div class="property-item-invest">
+                                <h4>Sosnowy Zakątek</h4>
+                            </div>
+                            <div class="property-item-content">
+                                <div class="propety-item-address">
+                                    <img src="{{ asset('img/svg/property-data-location.svg') }}" alt=""> Jabłonna, koło Warszawy
+                                </div>
+                                <div class="property-item-thumb">
+                                    <img src="https://placehold.co/600x400" alt="">
+                                </div>
+                                <div class="property-item-data">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><img src="{{ asset('img/svg/property-data-area.svg') }}" alt="" width="26" height="26">POWIERZCHNIA <span>73,12 m<sup>2</sup></span></li>
+                                        <li><img src="{{ asset('img/svg/property-data-rooms.svg') }}" alt="" width="26" height="26">LICZBA POKOI <span>3</span></li>
+                                        <li><img src="{{ asset('img/svg/property-data-floor.svg') }}" alt="" width="26" height="26">PIĘTRO <span>1 piętro</span></li>
+                                        <li><img src="{{ asset('img/svg/property-data-price.svg') }}" alt="" width="26" height="26">CENA <span class="text-green">749.000,00 zł</span></li>
+                                    </ul>
+                                </div>
+                                <div class="property-item-footer">
+                                    <h2>Mieszkanie 27</h2>
+                                    <span class="bttn bttn-icon bttn-brown ms-auto"><img src="{{ asset('img/svg/right-arrow.svg') }}" alt=""></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @include('front.contact.form')
+    </main>
+@endsection
