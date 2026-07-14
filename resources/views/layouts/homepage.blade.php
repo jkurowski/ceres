@@ -47,6 +47,60 @@
 
     @stack('scripts')
 
+<script>
+    $(document).ready(function() {
+        const heroSlider = $('#hero ul');
+        heroSlider.on('init', function(event, slick) {
+            const firstDotsContainer = $(slick.$slides[0]).find('.hero-dots');
+            if (slick.$dots) {
+                slick.$dots.appendTo(firstDotsContainer);
+            }
+        });
+
+        heroSlider.slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            centerMode: true,
+            centerPadding: '100px',
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: true,
+            prevArrow: '<button type="button" class="slick-prev"><img src="svg/slider-arrow-left.svg" alt="Previous"></button>',
+            nextArrow: '<button type="button" class="slick-next"><img src="svg/slider-arrow-right.svg" alt="Next"></button>',
+        });
+
+        heroSlider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+            const nextDotsContainer = $(slick.$slides[nextSlide]).find('.hero-dots');
+            if (slick.$dots) {
+                slick.$dots.appendTo(nextDotsContainer);
+            }
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script>
+    var map = L.map('map').setView([52.368849072328715, 20.942762800008232], 17);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([52.368849072328715, 20.942762800008232]).addTo(map)
+        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+        .openPopup();
+</script>
+
     {!! settings()->get("scripts_beforebody") !!}
 </body>
 </html>

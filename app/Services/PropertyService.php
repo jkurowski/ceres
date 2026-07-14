@@ -37,6 +37,14 @@ class PropertyService
 
         $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
         $name_webp = date('His').'_'.Str::slug($title).'.webp';
+
+        File::ensureDirectoryExists(public_path('investment/property'));
+        File::ensureDirectoryExists(public_path('investment/property/thumbs'));
+        File::ensureDirectoryExists(public_path('investment/property/list'));
+        File::ensureDirectoryExists(public_path('investment/property/webp'));
+        File::ensureDirectoryExists(public_path('investment/property/thumbs/webp'));
+        File::ensureDirectoryExists(public_path('investment/property/list/webp'));
+
         $file->move(public_path('investment/property'), $name);
 
         // Property card image
@@ -83,6 +91,9 @@ class PropertyService
         }
 
         $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
+
+        File::ensureDirectoryExists(public_path('investment/property/pdf'));
+
         $file->move(public_path('investment/property/pdf'), $name);
         $model->update(['file_pdf' => $name]);
     }

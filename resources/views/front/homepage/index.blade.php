@@ -3,29 +3,31 @@
 @section('content')
     <div id="hero">
         <ul class="list-unstyled mb-0">
-            <li>
-                <div class="hero-apla">
-                    <div class="hero-apla-content">
-                        <span>JABŁONNA KOŁO WARSZAWY</span>
-                        <h2>Sosnowy Zakątek</h2>
-                        <a href="#" class="bttn bttn-gold d-inline-flex bttn-arrow">Zobacz inwestycje<img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35"></a>
+            @foreach($slider as $s)
+                <li>
+                    <div class="hero-apla">
+                        <div class="hero-apla-content">
+                            @if($s->text)<span>{{ $s->text }}</span>@endif
+                            @if($s->title)<h2>{{ $s->title }}</h2>@endif
+                            @if($s->link)
+                                <a href="{{ $s->link }}" class="bttn bttn-gold d-inline-flex bttn-arrow" target="{{ $s->link_target }}">
+                                    {{ $s->link_button }}
+                                    <img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35">
+                                </a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <img src="{{ asset('img/slider-1.jpg') }}" alt="" class="hero-img">
-            </li>
-            <li>
-                <div class="hero-apla">
-                    <div class="hero-apla-content">
-                        <span>JABŁONNA KOŁO WARSZAWY</span>
-                        <h2>Sosnowy Zakątek</h2>
-                        <a href="#" class="bttn bttn-gold d-inline-flex bttn-arrow">Zobacz inwestycje<img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35"></a>
-                    </div>
-                </div>
-                <img src="{{ asset('img/slider-2.jpg') }}" alt="" class="hero-img">
-            </li>
+                    <picture>
+                        <source srcset="{{ asset('uploads/slider/webp/'.pathinfo($s->file, PATHINFO_FILENAME).'.webp') }}" media="(min-width: 1901px)" type="image/webp">
+                        <source srcset="{{ asset('uploads/slider/tablet/'.pathinfo($s->file, PATHINFO_FILENAME).'.webp') }}" media="(min-width: 721px)" type="image/webp">
+                        <source srcset="{{ asset('uploads/slider/mobile/'.pathinfo($s->file, PATHINFO_FILENAME).'.webp') }}" media="(min-width: 501px)" type="image/webp">
+                        <source srcset="{{ asset('uploads/slider/tiny/'.pathinfo($s->file, PATHINFO_FILENAME).'.webp') }}" media="(max-width: 500px)" type="image/webp">
+                        <img src="{{ asset('uploads/slider/'.$s->file) }}" alt="{{ $s->file_alt }}" class="hero-img">
+                    </picture>
+                </li>
+            @endforeach
         </ul>
     </div>
-
 
     <main>
         <section class="offer-search pb-0">

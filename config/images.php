@@ -146,8 +146,8 @@ return [
     */
 
     'slider' => [
-        'big_width' => 1920,
-        'big_height' => 792,
+        'big_width' => 2560,
+        'big_height' => 1056,
         'thumb_width' => 250,
         'thumb_height' => 103,
         'file_path' => 'uploads/slider/',

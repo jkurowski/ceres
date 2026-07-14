@@ -56,7 +56,13 @@
                                     ]])
                                 </div>
                                 <div class="row w-100 form-group">
-                                    @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'sublabel' => '(wymiary: '.config('images.slider.big_width').'px / '.config('images.slider.big_height').'px)', 'name' => 'file'])
+                                    @include('form-elements.html-input-file', [
+                                        'label' => 'Zdjęcie',
+                                        'sublabel' => 'Sugerowana szerokość: <b>2560 px</b>. <br>Maksymalna wysokość to <b>1180 px</b>. <br>System automatycznie wygeneruje mniejsze wersje dla tabletów i telefonów.',
+                                        'name' => 'file',
+                                        'file' => $entry->file,
+                                        'file_preview' => config('images.slider.preview_file_path')
+                                    ])
                                 </div>
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt])

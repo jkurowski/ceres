@@ -23,6 +23,10 @@ class BuildingService
 
         $name = date('His') . '_' . Str::slug($title) . '.' . $file->getClientOriginalExtension();
         $name_webp = date('His') . '_' . Str::slug($title) . '.webp';
+
+        File::ensureDirectoryExists(public_path('investment/building'));
+        File::ensureDirectoryExists(public_path('investment/building/webp'));
+
         $file->move(public_path('investment/building'), $name);
 
         $filepath = public_path('investment/building/' . $name);
