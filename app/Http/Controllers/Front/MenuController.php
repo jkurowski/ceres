@@ -19,13 +19,6 @@ class MenuController extends Controller
     public function index($uri = null)
     {
         $page = Page::where('uri', $uri)->firstOrFail();
-        //$parent = Page::ancestorsOf($page->id)->first();
-
-        $data = [];
-        if($uri == 'kariera'){
-            $data['jobofferts'] = $this->repository->allSort('ASC');
-        }
-
         $inline = Inline::whereSlug($uri)->get()->toArray();
 
         if (!view()->exists('front.menupage.'.$uri)) {
@@ -35,14 +28,12 @@ class MenuController extends Controller
         return view('front.menupage.'.$uri)
             ->with([
                 'page' => $page,
-                //'parent' => $parent
                 'uri' => $uri,
-                'data' => $data,
                 'array' => $inline,
             ]);
     }
 
-    public function kredyty($locale)
+    public function kredyty($locale = null)
     {
         $uri = 'kredyty';
         $page = Page::where('uri', $uri)->firstOrFail();

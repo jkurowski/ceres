@@ -77,6 +77,9 @@ Route::middleware(['restrictIp'])->group(function () {
     Route::post('/kontakt', 'Front\ContactController@send')->name('contact.send');
     Route::post('/kontakt/{property}', 'Front\ContactController@property')->name('contact.property');
 
+    Route::get('/o-firmie', 'Front\MenuController@index')->defaults('uri', 'o-firmie')->name('about');
+    Route::get('/kredyty', 'Front\MenuController@index')->defaults('uri', 'kredyty')->name('kredyty');
+
     // DeveloPro
     Route::group(['namespace' => 'Front\Developro', 'as' => 'developro.'], function () {
 
@@ -157,7 +160,7 @@ Route::middleware(['restrictIp'])->group(function () {
         });
 
         Route::get('{uri}', 'MenuController@index')
-            ->where('uri', '^(?!kontakt|schowek|aktualnosci|gallery|oferta-mieszkan|wyniki-wyszukiwania|inwestycje-planowane|inwestycje-zrealizowane|i/|historia/|przynalezne/|inline/|unsubscribe/)[A-Za-z0-9\-\/]+')
+            ->where('uri', '^(?!kontakt|schowek|o-firmie|kredyty|aktualnosci|gallery|oferta-mieszkan|wyniki-wyszukiwania|inwestycje-planowane|inwestycje-zrealizowane|i/|historia/|przynalezne/|inline/|unsubscribe/)[A-Za-z0-9\-\/]+')
             ->name('menu.show');
     });
 });

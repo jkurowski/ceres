@@ -66,7 +66,7 @@
                                             <img src="{{ asset('img/svg/contact/map.svg') }}" alt="" width="69" height="69">
                                         </span>
                                     <div>
-                                        <p><b>Biuro w Jabłonnej</b></p>
+                                        <p><b>Biuro w Jabłonnie</b></p>
                                         <p>ul. Marmurowa 30 lok.54</p>
                                         <p>05-110 Jabłonna</p>
                                     </div>

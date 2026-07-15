@@ -6,11 +6,12 @@
 @section('seo_robots', $page->meta_robots)
 
 @section('content')
-    @include('layouts.partials.page-header', ['h1' => 'Oferta', 'pageDesc' => $page->title_text, 'header' => asset('img/pageheader.jpg')])
+    @include('layouts.partials.page-header', ['h1' => 'Oferta', 'pageDesc' => $page->title_text, 'header' => asset('img/pageheader.jpg'), 'class' => 'sm'])
 
-    <section class="offer-search p-0">
+    <!-- Search form -->
+    <section class="offer-search">
         <div class="container">
-            <form action="/mieszkania" method="get">
+            <form action="{{ route('developro.index') }}" method="get">
                 <input type="hidden" name="invest" value="">
                 <input type="hidden" name="rooms" value="">
                 <input type="hidden" name="area" value="">
@@ -105,8 +106,9 @@
             </form>
         </div>
     </section>
+    <!-- End of Search form -->
 
-    <section>
+    <section class="pt-0">
         <div class="container">
             <div class="row">
                 @foreach ($current_investment as $p)

@@ -1,13 +1,19 @@
 @extends('layouts.page')
 
 @section('meta_title', $page->title)
-@isset($page->meta_title) @section('seo_title', $page->meta_title) @endisset
-@isset($page->meta_description) @section('seo_description', $page->meta_description) @endisset
-@section('content')
-    @include('layouts.partials.page-header', ['h1' => $page->title, 'pageDesc' => $page->title_text, 'header' => asset('img/pageheader.jpg')])
+@section('seo_title', $page->meta_title)
+@section('seo_description', $page->meta_description)
+@section('seo_robots', $page->meta_robots)
 
+@section('content')
     <main>
-        <section class="pt-0">
+        @include('layouts.partials.page-header', [
+            'h1' => $page->title,
+            'pageDesc' => $page->title_text,
+            'header' => asset('img/pageheader.jpg'
+        )])
+
+        <section>
             <div class="container">
                 <div class="row m-0">
                     <div class="col-12">
@@ -35,8 +41,7 @@
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/email.png') }}" alt="" width="120" height="120">
                                 </span>
-                                    <p><a href="">sprzedaz@sosnowy-jablonna.pl</a></p>
-                                    <p><a href="">sprzedaz@sosnowy-jablonna.pl</a></p>
+                                    <p><a href="mailto:sprzedaz@ceresdevelopment.pl">sprzedaz@ceresdevelopment.pl</a></p>
                                 </div>
                             </div>
                             <div class="col-3 p-0">
@@ -44,7 +49,7 @@
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/clock.png') }}" alt="" width="120" height="120">
                                 </span>
-                                    <p>Poniedziałek – Piątek: 8:00 – 17:00</p>
+                                    <p>Poniedziałek – Piątek: 8:30 – 18:00</p>
                                     <p>Sobota: po wcześniejszym umówieniu</p>
                                 </div>
                             </div>

@@ -14,7 +14,7 @@ class InvestmentController extends Controller
 
     public function __construct()
     {
-        $this->pageId = 8;
+        $this->pageId = 3;
     }
 
     public function show($slug)
