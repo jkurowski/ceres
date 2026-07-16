@@ -84,6 +84,8 @@ class BuildingPropertyController extends Controller
                 return [$prop->id => $name];
             });
 
+        $buildingProperties = Property::where('building_id', $building->id)->get(['id', 'name', 'cords', 'html']);
+
         $priceComponents = PropertyPriceComponent::all();
 
         return view('admin.developro.investment_building_property.form', [
@@ -94,6 +96,7 @@ class BuildingPropertyController extends Controller
             'investment' => $investment,
             'others' => $others,
             'all' => $all,
+            'buildingProperties' => $buildingProperties,
             'related' => collect(),
             'priceComponents' => $priceComponents
         ])->with('entry', Property::make());
@@ -177,6 +180,8 @@ class BuildingPropertyController extends Controller
         $isRelated = PropertyProperty::where('related_property_id', $property->id)->exists();
         $priceComponents = PropertyPriceComponent::all();
 
+        $buildingProperties = Property::where('building_id', $building->id)->get(['id', 'name', 'cords', 'html']);
+
         return view('admin.developro.investment_building_property.form', [
             'cardTitle' => 'Edytuj mieszkanie',
             'backButton' => route('admin.developro.investment.building.floor.properties.index', [$investment, $building, $floor]),
@@ -187,6 +192,7 @@ class BuildingPropertyController extends Controller
             'others' => $allOthers->pluck('name', 'id'),
             'visitor_others' => $visitor_others,
             'all' => $all,
+            'buildingProperties' => $buildingProperties,
             'related' => $related,
             'isRelated' => $isRelated,
             'priceComponents' => $priceComponents

@@ -283,15 +283,31 @@ MapView = Backbone.View.extend({
     parseImageTag: function(b) {
         alert("Sorry - pasting not supported yet")
     },
-    initialize: function() {
-        _.bindAll(this, "onLoadImage", "renderArea", "rafRender", "createAreaView", "clearCanvas", "drop");
+    initialize: function(options, mapData) {
+        _.bindAll(this, "onLoadImage", "renderArea", "rafRender", "createAreaView", "clearCanvas", "drop", "zoomIn", "zoomOut");
         this.mouseMove = _.throttle(this.mouseMove, 1000 / 60);
         this.current_tool = TOOL_ARROW;
-        this.model = new ImageMap(map);
+        this.zoom = 1;
+        this.model = new ImageMap(mapData);
+        this.model.zoom = this.zoom;
         this.canvas = this.el.querySelector("canvas");
         this.context = this.canvas.getContext("2d");
         this.createAreaViews();
         this.el.addEventListener("drop", this.drop)
+    },
+    zoomIn: function(e) {
+        if (e) e.preventDefault();
+        this.zoom += 0.1;
+        this.model.zoom = this.zoom;
+        this.onLoadImage();
+    },
+    zoomOut: function(e) {
+        if (e) e.preventDefault();
+        if (this.zoom > 0.2) {
+            this.zoom -= 0.1;
+            this.model.zoom = this.zoom;
+            this.onLoadImage();
+        }
     },
     deleteArea: function(c) {
         var d = parseInt(c.target.parentNode.getAttribute("data-index"), 10);
@@ -339,6 +355,12 @@ MapView = Backbone.View.extend({
     updateHTML: function() {
         var c = this.model.getMapTag();
         var d = this.model.getMapHTMLTag();
+
+        // Zabezpieczenie przed nadpisywaniem jeśli jesteśmy w trakcie ładowania danych
+        if (this._isLoadingData) {
+            return;
+        }
+
         this.$("textarea.mappa-html").val(c);
         this.$("textarea.mappa-area").val(d);
         if (!this.dont_render_list) {
@@ -356,9 +378,81 @@ MapView = Backbone.View.extend({
         return d
     },
     onLoadImage: function() {
-        this.canvas.width = this.image.width;
-        this.canvas.height = this.image.height;
+        this.canvas.width = this.image.width * this.zoom;
+        this.canvas.height = this.image.height * this.zoom;
+
+        // Jeśli model ma już obszary, upewnij się, że mają referencję do mappa dla zooma
+        const self = this;
+        if (this.model.get("areas")) {
+            this.model.get("areas").forEach(function(area) {
+                if (!area.get("mappa")) {
+                    area.set("mappa", self.model);
+                }
+            });
+        }
+
+        // Wczytaj dane z pola tekstowego przy pierwszym załadowaniu obrazu
+        const initialData = this.$("textarea.mappa-html").val();
+        if (initialData && (!this.model.get("areas") || this.model.get("areas").length === 0)) {
+            this.loadData(initialData);
+        }
+
         this.render()
+    },
+    loadData: function(data) {
+        if (!data) return;
+        this._isLoadingData = true;
+
+        if (typeof data === "string") {
+            data = data.trim();
+            if (data.length === 0) return;
+
+            // Dekodowanie encji HTML jeśli występują
+            if (data.includes('&quot;') || data.includes('&#34;') || data.includes('&amp;') || data.includes('&lt;') || data.includes('&gt;')) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = data;
+                data = txt.value;
+            }
+
+            // Obsługa formatu z błędem składniowym (np. przecinek na końcu tablicy)
+            data = data.replace(/,(\s*\])/g, "$1");
+            data = data.replace(/,(\s*\})/g, "$1");
+
+            try {
+                // Jeśli już jest tablicą
+                if (data.startsWith('[') && data.endsWith(']')) {
+                    data = JSON.parse(data);
+                } else {
+                    // Próba parsowania jako pojedynczy obiekt lub lista obiektów po przecinku
+                    // Najpierw czyścimy końcowe przecinki
+                    var cleanData = data.replace(/,(\s*,)*\s*$/, "");
+                    try {
+                        data = JSON.parse("[" + cleanData + "]");
+                    } catch (e2) {
+                        // Jeśli nadal błąd, spróbujmy bezpośrednio (może to pojedynczy obiekt)
+                        data = [JSON.parse(cleanData)];
+                    }
+                }
+            } catch (e) {
+                console.error("Błąd parsowania danych mappa:", e);
+                console.log("Dane, które spowodowały błąd:", data);
+                return;
+            }
+        }
+
+        if (Array.isArray(data)) {
+            // Filtrowanie nieprawidłowych elementów
+            var validData = data.filter(function(item) {
+                return item !== null && typeof item === 'object';
+            });
+
+            this.model.get("areas").reset(validData, {
+                parse: true
+            });
+            this.createAreaViews(); // Odbudowanie widoków obszarów po resetowaniu kolekcji
+            this.render();
+        }
+        this._isLoadingData = false;
     },
     loadImage: function(b) {
         this.image_url = b;
@@ -367,9 +461,7 @@ MapView = Backbone.View.extend({
         this.image.src = b
     },
     createAreaViews: function() {
-        if (!this.area_views) {
-            this.area_views = []
-        }
+        this.area_views = [];
         this.model.get("areas").forEach(this.createAreaView)
     },
     createAreaView: function(c) {
@@ -411,7 +503,7 @@ MapView = Backbone.View.extend({
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
     },
     renderImage: function() {
-        this.context.drawImage(this.image, 0, 0)
+        this.context.drawImage(this.image, 0, 0, this.image.width * this.zoom, this.image.height * this.zoom)
     },
     renderAreas: function() {
         var b = this;
@@ -422,6 +514,7 @@ MapView = Backbone.View.extend({
     },
     renderPoints: function() {
         var b = this.context;
+        var self = this;
         this.area_views.forEach(function(a) {
             if (a.model.get("selected") || a.model.highlighted) {
                 a.model.get("points").forEach(function(q, o, m) {
@@ -434,10 +527,11 @@ MapView = Backbone.View.extend({
                             b.fillStyle = "#0ff"
                         }
                     }
-                    var p = 5,
-                        n = 5,
-                        r = q.get("x") - p / 2,
-                        h = q.get("y") - n / 2;
+                    var zoom = self.zoom,
+                        p = 5 * zoom,
+                        n = 5 * zoom,
+                        r = (q.get("x") * zoom) - p / 2,
+                        h = (q.get("y") * zoom) - n / 2;
                     b.fillRect(r, h, p, n);
                     b.closePath()
                 })
@@ -447,8 +541,8 @@ MapView = Backbone.View.extend({
     mouseMove: function(f) {
         var d = this;
         var e = getOffsets(f);
-        f.offsetX = e.x;
-        f.offsetY = e.y;
+        f.offsetX = e.x / this.zoom;
+        f.offsetY = e.y / this.zoom;
         if (this.moving_point) {
             this.moving_point.set("x", f.offsetX);
             this.moving_point.set("y", f.offsetY)
@@ -467,12 +561,12 @@ MapView = Backbone.View.extend({
         var e = this,
             p, l;
         var k = getOffsets(n);
-        var m = k.x;
-        var o = k.y;
+        var m = k.x / this.zoom;
+        var o = k.y / this.zoom;
         if (this.current_tool === TOOL_ARROW) {
             this.area_views.forEach(function(c, b) {
                 c.model.get("points").forEach(function(d) {
-                    if (c.model.isMousedOverPoint(m, o, d, 5, 5)) {
+                    if (c.model.isMousedOverPoint(m, o, d, 8 / e.zoom, 8 / e.zoom)) {
                         p = c;
                         l = d
                     }
@@ -496,8 +590,8 @@ MapView = Backbone.View.extend({
     },
     mouseUp: function(g) {
         var f = getOffsets(g);
-        g.offsetX = f.x;
-        g.offsetY = f.y;
+        g.offsetX = f.x / this.zoom;
+        g.offsetY = f.y / this.zoom;
         if (this.adding_view && this.current_tool === TOOL_POLYGON) {
             this.adding_view.model.get("points").add({
                 x: g.offsetX,
@@ -511,18 +605,18 @@ MapView = Backbone.View.extend({
                         x: g.offsetX,
                         y: g.offsetY
                     }],
-                    selected: true
-                });
-                var e = new PolygonView({
-                    model: h
+                    selected: true,
+                    mappa: this.model
                 });
                 this.model.get("areas").add(h);
-                this.area_views.push(e);
-                this.adding_view = e;
+                this.createAreaViews();
+                this.adding_view = _.find(this.area_views, function(v) {
+                    return v.model === h;
+                });
                 this.render()
             } else {
                 if (this.adding_view && this.current_tool === TOOL_DELETE) {
-                    this.adding_view.model.deleteMousedOverPoint(g.offsetX, g.offsetY, 5, 5);
+                    this.adding_view.model.deleteMousedOverPoint(g.offsetX, g.offsetY, 5 / this.zoom, 5 / this.zoom);
                     this.render()
                 } else {
                     this.adding_view = this.moving_view
@@ -564,19 +658,20 @@ AreaView = Backbone.View.extend({
 PolygonView = AreaView.extend({
     render: function(e) {
         var d = this.model.get("points").getPoints();
-        var f = this.setupContext(e);
+        var zoom = (this.model.get("mappa") && typeof this.model.get("mappa").zoom !== 'undefined') ? this.model.get("mappa").zoom : 1;
+        this.setupContext(e);
         if (!d[0]) {
             return
         }
-        e.moveTo(d[0].x, d[0].y);
         e.beginPath();
+        e.moveTo(d[0].x * zoom, d[0].y * zoom);
         d.forEach(function(b, a) {
             if (!a) {
                 return
             }
-            e.lineTo(b.x, b.y)
+            e.lineTo(b.x * zoom, b.y * zoom)
         });
-        e.lineTo(d[0].x, d[0].y);
+        e.lineTo(d[0].x * zoom, d[0].y * zoom);
         e.closePath();
         e.fill();
         e.stroke()

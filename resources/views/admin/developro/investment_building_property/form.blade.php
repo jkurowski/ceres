@@ -37,12 +37,27 @@
                                             <ul class="mappa-points list-unstyled mb-0">
                                                 <li><a href="#" id="toggleparam" class="actionBtn tip toggleParam" data-toggle="tooltip" data-placement="top" title="Służy do pokazywania/ukrywania parametrów"><i class="fe-repeat"></i> Pokaż / ukryj parametry</a></li>
                                             </ul>
+                                            <ul class="mappa-points list-unstyled mb-0">
+                                                <li><a href="#" id="zoom-in" class="actionBtn tip zoomIn" data-toggle="tooltip" data-placement="top" title="Powiększ"><i class="fe-plus-circle"></i> Powiększ</a></li>
+                                                <li><a href="#" id="zoom-out" class="actionBtn tip zoomOut" data-toggle="tooltip" data-placement="top" title="Pomniejsz"><i class="fe-minus-circle"></i> Pomniejsz</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body control-col12">
                                 <div class="toggleRow w-100">
+                                    <div class="row w-100 form-group">
+                                        <div class="col-12 mb-4">
+                                            <label for="copyPropertySelect" class="col-12 col-form-label control-label pb-2">Kopiuj współrzędne z innego lokalu:</label>
+                                            <select id="copyPropertySelect" class="form-select">
+                                                <option value="">Wybierz lokal</option>
+                                                @foreach($buildingProperties as $bp)
+                                                    <option value="{{ $bp->id }}" data-cords="{{ htmlspecialchars($bp->cords) }}" data-html="{{ htmlspecialchars($bp->html) }}">{{ $bp->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row w-100 form-group">
                                         @include('form-elements.mappa', ['label' => 'Współrzędne punktów', 'name' => 'cords', 'value' => $entry->cords, 'rows' => 10, 'class' => 'mappa-html'])
                                     </div>
@@ -477,13 +492,13 @@
                                 </div>
                                 <div class="row w-100 form-group">
                                     <h2 class="mb-3">Plany</h2>
-                                    @include('form-elements.html-input-file', [
-                                        'label' => 'Plan mieszkania',
-                                        'sublabel' => '(wymiary: '.config('images.property_plan.width').'px / '.config('images.property_plan.height').'px)',
-                                        'name' => 'file',
-                                        'file' => $entry->file,
-                                        'file_preview' => config('images.property.preview_file_path')
-                                    ])
+                                        @include('form-elements.html-input-file', [
+                                            'label' => 'Plan mieszkania',
+                                            'sublabel' => '(wymiary: 1400px / 1000px)',
+                                            'name' => 'file',
+                                            'file' => $entry->file,
+                                            'file_preview' => config('images.property.preview_file_path')
+                                        ])
                                 </div>
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-file-pdf', [
@@ -665,9 +680,49 @@
                         }
 
                         $(document).ready(function() {
+                                $('#copyPropertySelect').on('change', function() {
+                                const selectedOption = $(this).find('option:selected');
+                                if (!selectedOption.val()) return;
+
+                                // Dekodowanie encji HTML
+                                function decodeHtml(html) {
+                                    const txt = document.createElement("textarea");
+                                    txt.innerHTML = html;
+                                    return txt.value;
+                                }
+
+                                const rawCords = selectedOption.attr('data-cords') || '';
+                                const rawHtml = selectedOption.attr('data-html') || '';
+
+                                const cords = decodeHtml(rawCords);
+                                const html = decodeHtml(rawHtml);
+
+                                if (cords || html) {
+                                    $('textarea[name="cords"]').val(cords);
+                                    $('textarea[name="html"]').val(html);
+
+                                    if (typeof mapview !== 'undefined' && cords) {
+                                        mapview.loadData(cords);
+                                    } else {
+                                        $('textarea[name="cords"]').trigger('change');
+                                        $('textarea[name="html"]').trigger('change');
+                                    }
+                                }
+                            });
+
                             @if($floor->file)
                             const mapview = new MapView({el: '.mappa'}, map);
                             mapview.loadImage('/investment/floor/{{ $floor->file }}');
+
+                            $('#zoom-in').on('click', function(e) {
+                                e.preventDefault();
+                                mapview.zoomIn();
+                            });
+
+                            $('#zoom-out').on('click', function(e) {
+                                e.preventDefault();
+                                mapview.zoomOut();
+                            });
                             @endif
 
                             $('.select-related').selectpicker();

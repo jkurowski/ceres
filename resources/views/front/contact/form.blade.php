@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-xl-6 order-2 order-xl-1">
                 <div class="contact-content">
                     <ul class="nav nav-tabs m-0 p-0 border-0 nav d-flex w-100 gap-2">
                         <li class="flex-fill">
@@ -31,7 +31,7 @@
                                             <img src="{{ asset('img/svg/contact/map.svg') }}" alt="" width="69" height="69">
                                         </span>
                                     <div>
-                                        <p><b>Biuro w Jabłonnej</b></p>
+                                        <p><b>Biuro w Jabłonnie</b></p>
                                         <p>ul. Marmurowa 30 lok.54</p>
                                         <p>05-110 Jabłonna</p>
                                     </div>
@@ -42,7 +42,7 @@
                                         </span>
                                     <div>
                                         <p><b>Godziny otwarcia:</b></p>
-                                        <p>poniedziałek-piątek 9:00-17:00</p>
+                                        <p>poniedziałek-piątek 8:30-18:00</p>
                                         <p>sobota - po wcześniejszej rezerwacji</p>
                                         <p>Niedziela - nieczynne</p>
                                     </div>
@@ -53,7 +53,8 @@
                                         </span>
                                     <div>
                                         <p><b>Telefon:</b></p>
-                                        <p><a href="">+48 602 293 025</a></p>
+                                        <p><a href="tel:+48602293025">+48 602 293 025</a></p>
+                                        <p><a href="tel:+48600897075">+48 600 897 075</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -77,7 +78,7 @@
                                         </span>
                                     <div>
                                         <p><b>Godziny otwarcia:</b></p>
-                                        <p>poniedziałek-piątek 9:00-17:00</p>
+                                        <p>poniedziałek-piątek 8:30-18:00</p>
                                         <p>sobota - po wcześniejszej rezerwacji</p>
                                         <p>Niedziela - nieczynne</p>
                                     </div>
@@ -88,7 +89,8 @@
                                         </span>
                                     <div>
                                         <p><b>Telefon:</b></p>
-                                        <p><a href="">+48 602 293 025</a></p>
+                                        <p><a href="tel:+48602293025">+48 602 293 025</a></p>
+                                        <p><a href="tel:+48600897075">+48 600 897 075</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -96,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-xl-6 order-1 order-xl-2">
                 <div class="form-content">
                     <h4 class="mb-5">Wyślij wiadomość</h4>
                     <div class="row">

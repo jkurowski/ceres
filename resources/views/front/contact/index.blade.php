@@ -18,7 +18,7 @@
                 <div class="row m-0">
                     <div class="col-12">
                         <div class="row contact-data-row">
-                            <div class="col-3 p-0">
+                            <div class="col-12 col-md-6 col-xl-3 pb-3 pb-md-5 p-xl-0">
                                 <div class="contact-data text-center">
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/mapmarker.png') }}" alt="" width="120" height="120">
@@ -27,7 +27,7 @@
                                     <p>05-110 Jabłonna</p>
                                 </div>
                             </div>
-                            <div class="col-3 p-0">
+                            <div class="col-12 col-md-6 col-xl-3 pb-3 pb-md-5 p-xl-0">
                                 <div class="contact-data text-center">
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/phone.png') }}" alt="" width="120" height="120">
@@ -36,7 +36,7 @@
                                     <p><a href="">+48 600 897 075</a></p>
                                 </div>
                             </div>
-                            <div class="col-3 p-0">
+                            <div class="col-12 col-md-6 col-xl-3 pb-3 p-md-0">
                                 <div class="contact-data text-center">
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/email.png') }}" alt="" width="120" height="120">
@@ -44,7 +44,7 @@
                                     <p><a href="mailto:sprzedaz@ceresdevelopment.pl">sprzedaz@ceresdevelopment.pl</a></p>
                                 </div>
                             </div>
-                            <div class="col-3 p-0">
+                            <div class="col-12 col-md-6 col-xl-3 p-0">
                                 <div class="contact-data border-0 text-center">
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/clock.png') }}" alt="" width="120" height="120">

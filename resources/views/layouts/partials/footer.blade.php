@@ -16,11 +16,10 @@
                 <div class="footer-box">
                     <h6>MENU</h6>
                     <ul class="mb-0 list-unstyled">
-                        <li><a href="">Strona główna</a></li>
-                        <li><a href="">Oferta</a></li>
-                        <li><a href="">O firmie</a></li>
-                        <li><a href="">Dla Klienta</a></li>
-                        <li><a href="">Kontakt</a></li>
+                        <li><a href="/">Strona główna</a></li>
+                        <li><a href="{{ route('developro.index') }}">Oferta</a></li>
+                        <li><a href="{{ route('about') }}">O firmie</a></li>
+                        <li><a href="{{ route('contact') }}">Kontakt</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,8 +27,8 @@
                 <div class="footer-box">
                     <h6>INWESTYCJE</h6>
                     <ul class="mb-0 list-unstyled">
-                        <li><a href="">Sosnowy Zakątek</a></li>
-                        <li><a href="">Sprawna</a></li>
+                        <li><a href="https://www.sosnowy-jablonna.pl/" target="_blank">Sosnowy Zakątek</a></li>
+                        <li><a href="/i/sprawna">Sprawna</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,9 +36,8 @@
                 <div class="footer-box">
                     <h6>INFORMACJE</h6>
                     <ul class="mb-0 list-unstyled">
-                        <li><a href="">Kredyty</a></li>
+                        <li><a href="{{ route('kredyty') }}">Kredyty</a></li>
                         <li><a href="">Polityka prywatności</a></li>
-                        <li><a href="">Deweloper</a></li>
                         <li><a href="">Inwestycje zrealizowane</a></li>
                     </ul>
                 </div>
@@ -48,9 +46,9 @@
                 <div class="footer-box">
                     <h6>KONTAKT</h6>
                     <ul class="mb-0 list-unstyled">
-                        <li><a href="">+48 602 293 025</a></li>
-                        <li><a href="">+48 600 897 075</a></li>
-                        <li><a href="">sprzedaz@sosnowy-jablonna.pl</a></li>
+                        <li><a href="tel:+48602293025">+48 602 293 025</a></li>
+                        <li><a href="tel:+48600897075">+48 600 897 075</a></li>
+                        <li><a href="mailto:sprzedaz@sosnowy-jablonna.pl">Wyślij wiadomość</a></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +60,7 @@
         </div>
     </div>
     <div class="copyrights">
-        Copyright © 2026 Ceres Development All Rights Reserved <span>|</span> Projekt i wykonanie: <a href="" target="_blank">DeveloPro.pl</a>
+        Copyright © <?=date("Y");?> Ceres Development All Rights Reserved <span>|</span> Projekt i wykonanie: <a href="https://www.developro.pl/" target="_blank">DeveloPro.pl</a>
     </div>
 </footer>
 <script src="{{ asset('js/jquery.min.js') }}"></script>

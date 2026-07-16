@@ -23,7 +23,11 @@ class BuildingFloorService
 
         $name = date('His') . '_' . Str::slug($title) . '.' . $file->getClientOriginalExtension();
         $name_webp = date('His') . '_' . Str::slug($title) . '.webp';
-        $file->storeAs('floor', $name, 'investment_uploads');
+
+        File::ensureDirectoryExists(public_path('investment/floor'));
+        File::ensureDirectoryExists(public_path('investment/floor/webp'));
+
+        $file->move(public_path('investment/floor'), $name);
 
         $filepath = public_path('investment/floor/' . $name);
         $file_list_path_webp = public_path('investment/floor/webp/' . $name_webp);
