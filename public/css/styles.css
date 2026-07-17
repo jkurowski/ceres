@@ -1596,6 +1596,32 @@ footer .social-media a:hover {
   .section-header .family-count h3 {
     font-size: 23px;
   }
+  .plan-info {
+    font-size: 21px;
+  }
+  .property-list-item .bttn {
+    justify-content: center;
+  }
+  .property-list-item .bttn img {
+    display: none;
+  }
+  .property-list-item .bttn.bttn-xs {
+    font-size: 11px;
+    padding: 7px;
+    height: 37px;
+  }
+  .property-list-item-name h2 {
+    font-size: 16px;
+  }
+  .property-list-item-name .h3 {
+    font-size: 23px;
+  }
+  .list-layout .property-list-item-info {
+    font-size: 12px;
+  }
+  .property-list-item-status p {
+    font-size: 16px !important;
+  }
 }
 /* end of 1399.98 */
 @media (max-width: 1299.98px) {
@@ -1680,18 +1706,32 @@ footer .social-media a:hover {
   header nav ul li.active:before {
     display: none;
   }
+  header nav ul li:hover ul {
+    display: block;
+    position: static;
+    border-radius: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    bottom: -44px;
+    z-index: 20;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  header nav ul li:hover ul a {
+    font-size: 18px;
+  }
   header nav ul li ul {
     display: block;
     position: static;
     width: 100%;
     box-shadow: none;
-    padding: 8px 0 0;
+    padding: 0;
     text-align: center;
   }
   header nav ul li ul li {
     height: auto;
     border-bottom: 0;
-    padding: 8px 0;
+    padding: 0;
     justify-content: center;
   }
   #tabContact .tab-content-phone a {
@@ -1832,6 +1872,11 @@ footer .social-media a:hover {
   .family-counter {
     font-size: 60px;
     gap: 15px;
+  }
+  .plan-info {
+    font-size: 18px;
+    padding: 6px;
+    margin-bottom: -10px;
   }
 }
 /* end of 991.98 */
@@ -2041,6 +2086,14 @@ footer .social-media a:hover {
   .features-list li p {
     font-size: 16px;
     line-height: 21px;
+  }
+  .property h2 {
+    font-size: 42px;
+  }
+  #planNav .bttn {
+    width: 100% !important;
+    justify-content: center;
+    margin: 5px 0;
   }
 }
 /* end of 575.98 */

@@ -65,10 +65,10 @@
             </div>
         </div>
 
-        <section class="pb-0 pt-5">
+        <section class="pb-0 pt-2 pt-sm-5">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12 col-lg-8">
                         <div class="plan-info">
                             <p>Z planu budynku wybierz piętro, lub skorzystaj z wyszukiwarki</p>
                         </div>

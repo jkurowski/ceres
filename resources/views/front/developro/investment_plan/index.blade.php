@@ -50,7 +50,7 @@
         <section class="pb-0">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12 col-lg-8">
                         <div class="plan-info">
                             <p>Z planu inwestycji wybierz budynek, lub skorzystaj z wyszukiwarki</p>
                         </div>

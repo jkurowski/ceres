@@ -16,7 +16,7 @@
                             <li><a href="{{ route('developro.index') }}">Oferta</a></li>
                             <li><a href="{{ route('about') }}">O firmie <img src="{{ asset('img/svg/submenu.svg') }}" alt="Dropdown icon" class="ms-2 d-none"></a></li>
                             <li>
-                                <a href="#">Dla Klienta <img src="{{ asset('img/svg/submenu.svg') }}" alt="Dropdown icon" class="ms-2"></a>
+                                <a href="#" class="d-none d-xl-block">Dla Klienta <img src="{{ asset('img/svg/submenu.svg') }}" alt="Dropdown icon" class="ms-2"></a>
                                 <ul class="mb-0 list-unstyled submenu">
                                     <li><a href="{{ route('kredyty') }}">Kredyty</a></li>
                                 </ul>
