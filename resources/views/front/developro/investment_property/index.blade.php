@@ -502,7 +502,13 @@
             </section>
         @endif
 
-        <!-- Podobne mieszkania -->
+
+        <!- Contact form -->
+        @include('front.contact.form', ['page_name' => $property->name])
+        <!- End of Contact form -->
+
+
+            <!-- Podobne mieszkania -->
             @if(1 == 2)
         <section>
             <div class="container">

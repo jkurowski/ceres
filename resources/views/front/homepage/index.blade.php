@@ -290,7 +290,7 @@
         @endif
 
         <!- Contact form -->
-        @include('front.contact.form')
+        @include('front.contact.form', ['page_name' => 'Strona główna'])
         <!- End of Contact form -->
 
     </main>

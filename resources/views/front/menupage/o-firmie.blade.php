@@ -209,7 +209,7 @@
         </section>
 
         <!- Contact form -->
-        @include('front.contact.form')
+        @include('front.contact.form', ['page_name' => $page->title])
         <!- End of Contact form -->
 
     </main>
