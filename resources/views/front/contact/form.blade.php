@@ -111,41 +111,50 @@
                             {{ session('error') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="post" id="contact-form" action="{{ route('contact.send') }}" class="validateForm">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="validate[required] form-control @error('form_name') is-invalid @enderror" id="floatingName" placeholder="Imię i nazwisko" name="form_name" value="{{ old('form_name') }}">
+                                    <input type="text" class="validate[required] form-control @error('name') is-invalid @enderror" id="floatingName" placeholder="Imię i nazwisko" name="name" value="{{ old('name') }}">
                                     <label for="floatingName" class="h-100">Imię i nazwisko *</label>
-                                    @error('form_name')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="validate[required] form-control @error('form_phone') is-invalid @enderror" id="floatingPhone" placeholder="Telefon" name="form_phone" value="{{ old('form_phone') }}">
+                                    <input type="text" class="validate[required] form-control @error('phone') is-invalid @enderror" id="floatingPhone" placeholder="Telefon" name="phone" value="{{ old('phone') }}">
                                     <label for="floatingPhone" class="h-100">Telefon</label>
-                                    @error('form_phone')
+                                    @error('phone')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="validate[required] form-control @error('form_email') is-invalid @enderror" id="floatingEmail" placeholder="E-mail" name="form_email" value="{{ old('form_email') }}">
+                                    <input type="text" class="validate[required] form-control @error('email') is-invalid @enderror" id="floatingEmail" placeholder="E-mail" name="email" value="{{ old('email') }}">
                                     <label for="floatingEmail" class="h-100">E-mail *</label>
-                                    @error('form_email')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <textarea class="validate[required] form-control @error('form_message') is-invalid @enderror" id="floatingMessage" placeholder="Wiadomość *" name="form_message">{{ old('form_message') }}</textarea>
+                                    <textarea class="validate[required] form-control @error('message') is-invalid @enderror" id="floatingMessage" placeholder="Wiadomość *" name="message">{{ old('message') }}</textarea>
                                     <label for="floatingMessage">Wiadomość *</label>
-                                    @error('form_message')
+                                    @error('message')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
