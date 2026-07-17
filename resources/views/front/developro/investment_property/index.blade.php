@@ -157,7 +157,7 @@
         <section>
             <div class="container">
                 <div class="row row-gap-30">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="text-secondary">
                             @if($investment->status != 3)
                                 @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
@@ -435,7 +435,7 @@
                             <div id="clipboardmessage"></div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 ps-5">
+                    <div class="col-12 col-md-7 ps-5">
                         @if($property->file && $property->model_3d)
                         <ul class="nav justify-content-center justify-content-md-end mb-4 mb-sm-30 gap-30" role="tablist">
                             @if($property->model_3d)
