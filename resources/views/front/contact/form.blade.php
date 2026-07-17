@@ -111,7 +111,7 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                    <form method="post" id="contact-form" action="{{ route('front.contact.send') }}" class="validateForm">
+                    <form method="post" id="contact-form" action="{{ route('contact.send') }}" class="validateForm">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-12">
