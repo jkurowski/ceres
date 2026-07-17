@@ -105,7 +105,7 @@
                     @else
                         <a class="bttn bttn-arrow bttn-xs bttn-gold d-inline-flex w-100 @if(Route::currentRouteName() === 'clipboard.index') pe-2 ps-2 ms-2 @endif" href="#">
                     @endif
-                            SPRAWDŹ <img src="https://ceres.test/img/svg/right-arrow.svg" alt="" width="23" height="24" class="ms-auto">
+                            SPRAWDŹ <img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="23" height="24" class="ms-auto">
                         </a>
 
                 </div>
