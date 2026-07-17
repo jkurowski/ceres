@@ -155,7 +155,7 @@
         </section>
 
         <section>
-            <div class="container">
+            <div class="container property">
                 <div class="row row-gap-30">
                     <div class="col-12 col-md-5">
                         <div class="text-secondary">
@@ -166,38 +166,36 @@
                             @endif
 
                             <h2 class="mb-0">{{$property->name}}</h2>
-                            <p class="text-uppercase fw-900 fs-15 ff-secondary mb-0 lh-1">{{$investment->name}}</p>
+                            <h4 class="mb-0">{{$investment->name}}</h4>
 
                             @if($investment->status != 3)
-                                <p class="mb-20"><small>{{ investmentAdvanced($investment->progress) }}</small></p>
-
                                 <?php if ($property->status == 3) : ?>
-                                <p class="text-danger text-uppercase fw-bold fs-5">Sprzedany</p>
+                                <p class="text-danger text-uppercase fw-bold mt-4 mb-4 status">Sprzedane</p>
                                 <?php elseif ($property->status == 1) : ?>
-                                <p class="text-success text-uppercase fw-bold fs-5">Dostępny</p>
+                                <p class="text-success text-uppercase fw-bold mt-4 mb-4 status">Dostępne</p>
                                 <?php else : ?>
-                                <p class="text-warning text-uppercase fw-bold fs-5">Rezerwacja</p>
+                                <p class="text-warning text-uppercase fw-bold mt-4 mb-4 status">Rezerwacja</p>
                                 <?php endif; ?>
 
     {{--                            @if($investment->show_prices)--}}
                                     <p class="h4 mb-1 ff-secondary row">
                                         <span class="col-12">
                                             @if($property->price_brutto && $property->status == 1 && !$property->highlighted)
-                                                <span class="fs-2 d-block">@money($property->price_brutto)</span>
-                                                <span class="fs-14 d-block">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
+                                                <span class="price">@money($property->price_brutto)</span>
+                                                <span class="price-per-m">@money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
                                             @endif
                                         </span>
                                     </p>
                                     @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
                                         <p class="h4 mb-1 ff-secondary row">
                                             <span class="col-6">
-                                                <span class="fs-2 d-block">@money($property->promotion_price)</span>
-                                                <span class="fs-14 d-block">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
+                                                <span class="price">@money($property->promotion_price)</span>
+                                                <span class="price-per-m">@money(($property->promotion_price / $property->area)) / m<sup>2</sup></span>
                                             </span>
                                             <span class="col-6 text-end pt-2">
                                                 @if($property->price_brutto)
-                                                    <span class="text-body-emphasis opacity-50 fs-24 align-middle text-decoration-line-through d-block">@money($property->price_brutto)</span>
-                                                    <span class="text-body-emphasis d-block opacity-50 fs-14 align-middle text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
+                                                    <span class="price text-decoration-line-through d-block">@money($property->price_brutto)</span>
+                                                    <span class="price-per-m text-decoration-line-through">@money($property->price_brutto / $property->area) / m<sup>2</sup></span>
                                                 @endif
                                             </span>
 
@@ -228,7 +226,7 @@
                                 @endauth
     {{--                            @endif--}}
 
-
+                                    <hr>
                                     @if($property->has_price_history)
                                         <a href="#" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1 btn-history mt-3" data-id="{{ $property->id }}">Pokaż historię ceny</a>
                                         <div id="modalHistory"></div>
@@ -250,7 +248,7 @@
                             @endif
 
                             <div class="mt-4">
-                                <table class="table">
+                                <table class="table radius-8">
                                     <tbody>
                                     <tr>
                                         <td class="pb-2">Piętro</td>
@@ -469,7 +467,7 @@
                                                     <source type="image/webp" srcset="{{ asset('/investment/property/webp/'.$property->file_webp) }}">
                                                 @endif
                                                 <source type="image/jpeg" srcset="{{ asset('/investment/property/'.$property->file) }}">
-                                                <img src="{{ asset('/investment/property/'.$property->file) }}" alt="{{$property->name}}" class="w-100">
+                                                <img src="{{ asset('/investment/property/'.$property->file) }}" alt="{{$property->name}}" class="w-100 radius-8">
                                             </picture>
                                         </a>
                                     </div>

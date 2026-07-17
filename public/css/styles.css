@@ -1369,6 +1369,32 @@ footer .social-media a:hover {
     flex-wrap: wrap;
   }
 }
+.property h2 {
+  font-family: "Abhaya Libre", serif;
+  color: #75543f;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 1;
+}
+.property h4 {
+  color: #a69082;
+  font-weight: 600;
+  font-size: 15px;
+}
+.property .status {
+  font-size: 26px;
+}
+.property .price {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  color: #5f412d;
+  line-height: 1.2;
+}
+.property .price-per-m {
+  font-size: 16px;
+  line-height: 1;
+}
 /* RWD
 ================================================== */
 @media (max-width: 1699.98px) {
