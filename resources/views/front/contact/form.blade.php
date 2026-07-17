@@ -101,54 +101,82 @@
             <div class="col-12 col-xl-6 order-1 order-xl-2">
                 <div class="form-content">
                     <h4 class="mb-5">Wyślij wiadomość</h4>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="validate[required] form-control " id="floatingName" placeholder="Imię i nazwisko" name="name" value="">
-                                <label for="floatingName" class="h-100">Imię i nazwisko *</label>
+                    @if (session('success'))
+                        <div class="alert alert-success border-0">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-warning border-0">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    <form method="post" id="contact-form" action="{{ route('contact.send') }}" class="validateForm">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="validate[required] form-control @error('form_name') is-invalid @enderror" id="floatingName" placeholder="Imię i nazwisko" name="form_name" value="{{ old('form_name') }}">
+                                    <label for="floatingName" class="h-100">Imię i nazwisko *</label>
+                                    @error('form_name')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="validate[required] form-control @error('form_phone') is-invalid @enderror" id="floatingPhone" placeholder="Telefon" name="form_phone" value="{{ old('form_phone') }}">
+                                    <label for="floatingPhone" class="h-100">Telefon</label>
+                                    @error('form_phone')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="validate[required] form-control @error('form_email') is-invalid @enderror" id="floatingEmail" placeholder="E-mail" name="form_email" value="{{ old('form_email') }}">
+                                    <label for="floatingEmail" class="h-100">E-mail *</label>
+                                    @error('form_email')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <textarea class="validate[required] form-control @error('form_message') is-invalid @enderror" id="floatingMessage" placeholder="Wiadomość *" name="form_message">{{ old('form_message') }}</textarea>
+                                    <label for="floatingMessage">Wiadomość *</label>
+                                    @error('form_message')
+                                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-12 rodo-rules mt-3 ">
+                                @foreach ($rules as $r)
+                                    <div class="form-check @error('rule_'.$r->id) is-invalid @enderror">
+                                        <input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">
+                                        <label for="rule_{{$r->id}}" class="form-check-label">
+                                            {!! $r->text !!}
+                                        </label>
+                                        @error('rule_'.$r->id)
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="col-12">
+                                <input name="form_page" type="hidden" value="{{ $page->name }}">
+                                <script type="text/javascript">
+                                    @if(settings()->get("recaptcha_site_key") && settings()->get("recaptcha_secret_key"))
+                                    document.write("<button type=\"submit\" class=\"bttn bttn-brown d-inline-flex bttn-arrow mt-4 g-recaptcha\" data-sitekey=\"{{ settings()->get("recaptcha_site_key") }}\" data-callback=\"onRecaptchaSuccess\" data-action=\"submitContact\">Wyślij wiadomość<img src=\"{{ asset('img/svg/right-arrow.svg') }}\" alt=\"\" width=\"33\" height=\"35\"></button>");
+                                    @else
+                                    document.write("<button type=\"submit\" class=\"bttn bttn-brown d-inline-flex bttn-arrow mt-4\">Wyślij wiadomość<img src=\"{{ asset('img/svg/right-arrow.svg') }}\" alt=\"\" width=\"33\" height=\"35\"></button>");
+                                    @endif
+                                </script>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="validate[required] form-control " id="floatingPhone" placeholder="Telefon" name="phone" value="">
-                                <label for="floatingPhone" class="h-100">Telefon</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="validate[required] form-control " id="floatingEmail" placeholder="E-mail" name="email" value="">
-                                <label for="floatingEmail" class="h-100">E-mail *</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <textarea class="validate[required] form-control " id="floatingMessage" placeholder="Wiadomość *" name="message"></textarea>
-                                <label for="floatingMessage">Wiadomość *</label>
-                            </div>
-                        </div>
-                        <div class="col-12 obligatory-text">
-                            <p>Na podstawie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (Dz. Urz. UE L 119 z 04.05.2016) informujemy, iż przesyłając wiadomość za pomocą formularza kontaktowego wyrażacie Państwo zgodę na (polityka informacyjna):</p>
-                        </div>
-                        <div class="col-12 rodo-rules mt-3 ">
-                            <div class="form-check">
-                                <input name="rule_1" id="rule_1" value="1" type="checkbox" class="form-check-input  validate[required] " data-prompt-position="topLeft:0">
-                                <label for="rule_1" class="form-check-label">
-                                    <p>Zapoznałem się z Polityką prywatności i zawartą w niej Informacją na temat przetwarzania danych osobowych</p>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 rodo-rules mt-3 ">
-                            <div class="form-check">
-                                <input name="rule_1" id="rule_2" value="1" type="checkbox" class="form-check-input  validate[required] " data-prompt-position="topLeft:0">
-                                <label for="rule_2" class="form-check-label">
-                                    <p>Wyrażam zgodę na otrzymywanie od Ceres Development sp. z o.o. informacji marketingowych, przekazywanych za pomocą telekomunikacyjnych urządzeń końcowych oraz tzw. automatycznych systemów wywołujących drogą elektroniczną na podany powyżej adres e-mail</p>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="bttn bttn-brown d-inline-flex bttn-arrow mt-4">Wyślij wiadomość<img src="{{ asset('img/svg/right-arrow.svg') }}" alt="" width="33" height="35"></button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
