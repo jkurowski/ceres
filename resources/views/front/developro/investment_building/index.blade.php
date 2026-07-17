@@ -32,6 +32,7 @@
 @section('content')
     <main>
         @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '.$building->name, 'pageDesc' => $investment->name, 'class' => 'sm'])
+        @if(1 == 2)
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -39,8 +40,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
+        @endif
+        <div class="container pt-5">
             <div id="planNav" class="row">
                 <div class="col-6 col-sm-4">
                     @if($prev_building)

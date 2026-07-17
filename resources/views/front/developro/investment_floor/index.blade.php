@@ -67,16 +67,18 @@
             </div>
         </section>
 
-        <div id="mainContent"></div>
-        <section class="sticky-top py-0 bg-white sticky-top-menu">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        @include('front.investments.submenu', ['menuIds' => $investment->menu])
+        @if(1 == 2)
+            <div id="mainContent"></div>
+            <section class="sticky-top py-0 bg-white sticky-top-menu">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            @include('front.investments.submenu', ['menuIds' => $investment->menu])
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         <section id="plan">
             <div class="container">

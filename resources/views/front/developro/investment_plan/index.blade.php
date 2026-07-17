@@ -37,6 +37,7 @@
             'class' => 'sm'
             ])
 
+        @if(1 == 2)
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -44,8 +45,9 @@
                 </div>
             </div>
         </div>
+        @endif
 
-        <section class="p-0">
+        <section class="pb-0">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-8">

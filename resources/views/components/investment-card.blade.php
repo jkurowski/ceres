@@ -5,7 +5,7 @@
         $url = 'https://www.sosnowy-jablonna.pl';
         $target = '_blank';
     } else {
-        $url = route('developro.show', $p->slug);
+        $url = route('developro.plan', $p->slug);
         $target = '_self';
     }
 @endphp
