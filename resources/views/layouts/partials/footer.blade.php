@@ -5,7 +5,7 @@
                 <div class="footer-box pe-xl-5 footer-box-logo">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="257" height="67" class="mb-4">
                     <p>Rodzinna firma deweloperska specjalizująca się <br>w kameralnym budownictwie wielorodzinnym</p>
-                    <div class="social-media mt-4">
+                    <div class="social-media mt-4 d-none">
                         <a href=""><img src="{{ asset('img/svg/facebook.svg') }}" alt="Ikonka Facebook"></a>
                         <a href=""><img src="{{ asset('img/svg/instagram.svg') }}" alt="Ikonka Instagram"></a>
                         <a href=""><img src="{{ asset('img/svg/linkedin.svg') }}" alt="Ikonka Linkedin"></a>
@@ -38,7 +38,7 @@
                     <ul class="mb-0 list-unstyled">
                         <li><a href="{{ route('kredyty') }}">Kredyty</a></li>
                         <li><a href="">Polityka prywatności</a></li>
-                        <li><a href="">Inwestycje zrealizowane</a></li>
+                        <li class="d-none"><a href="">Inwestycje zrealizowane</a></li>
                     </ul>
                 </div>
             </div>
