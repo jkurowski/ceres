@@ -150,6 +150,11 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-12 obligatory-text">
+                                <div class="rodo-obligation">
+                                    <p>Na podstawie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (Dz. Urz. UE L 119 z 04.05.2016) informujemy, iż przesyłając wiadomość za pomocą formularza kontaktowego wyrażacie Państwo zgodę na (polityka informacyjna):</p>
+                                </div>
+                            </div>
 
                             <div class="col-12 rodo-rules mt-3 ">
                                 @foreach ($rules as $r)
