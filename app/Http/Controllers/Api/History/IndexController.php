@@ -29,8 +29,8 @@ class IndexController extends Controller
         $extIdent = bin2hex(random_bytes(18));
         $dataset->appendChild($doc->createElement("extIdent", $extIdent));
 
-        $company = "Kalter Nieruchomości Sp. z o.o.";
-        $year = 2025;
+        $company = "Ceres Development spółka z ograniczoną odpowiedzialnością sp.k.";
+        $year = 2026;
 
         // title
         $title = $doc->createElement("title");
@@ -100,7 +100,7 @@ class IndexController extends Controller
         }
 
         $today = now()->format('Y-m-d');
-        $investments = Investment::where('status', 1)->with(['company', 'salePoint'])->get();
+        $investments = Investment::where('id', 2)->with(['company', 'salePoint'])->get();
         foreach ($investments as $investment) {
 
             $filename = "ceny-ofertowe-" . $investment->slug . "-" . $today . ".csv";
@@ -331,7 +331,7 @@ class IndexController extends Controller
     public function showAsTable(Investment $investment)
     {
         $today = now()->format('Y-m-d');
-        //$investments = Investment::where('status', 1)->with(['company', 'salePoint', 'properties'])->get();
+        //$investments = Investment::where('id', 2)->with(['company', 'salePoint', 'properties'])->get();
         $investment->with(['company', 'salePoint', 'properties'])->get();
 
         $baseUrl = config('app.url');
