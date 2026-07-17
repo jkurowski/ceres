@@ -157,7 +157,7 @@
         <section>
             <div class="container">
                 <div class="row row-gap-30">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-5">
                         <div class="text-secondary">
                             @if($investment->status != 3)
                                 @if($property->highlighted && $property->promotion_price && $property->price_brutto && $property->status == 1)
@@ -466,10 +466,10 @@
                                         <a href="{{ asset('/investment/property/'.$property->file) }}" class="glightbox">
                                             <picture>
                                                 @if($property->file_webp)
-                                                    <source type="image/webp" srcset="{{ asset('/investment/property/thumbs/webp/'.$property->file_webp) }}">
+                                                    <source type="image/webp" srcset="{{ asset('/investment/property/webp/'.$property->file_webp) }}">
                                                 @endif
-                                                <source type="image/jpeg" srcset="{{ asset('/investment/property/thumbs/'.$property->file) }}">
-                                                <img src="{{ asset('/investment/property/thumbs/'.$property->file) }}" alt="{{$property->name}}" class="w-100">
+                                                <source type="image/jpeg" srcset="{{ asset('/investment/property/'.$property->file) }}">
+                                                <img src="{{ asset('/investment/property/'.$property->file) }}" alt="{{$property->name}}" class="w-100">
                                             </picture>
                                         </a>
                                     </div>
