@@ -407,9 +407,9 @@
                             <div class="mb-3"></div>
                             <div class="d-flex flex-wrap gap-2">
                                 @if($investment->status != 3)
-                                    <a href="#kontakt" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o ofertę</a>
+                                    <a href="#contact-form" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o ofertę</a>
                                 @else
-                                    <a href="#kontakt" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o przewidywaną cenę</a>
+                                    <a href="#contact-form" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o przewidywaną cenę</a>
                                 @endif
 
                                 @if($property->file_pdf)
@@ -422,9 +422,6 @@
                                 @if($investment->status == 99)
                                 <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
                                 @endif
-                                <!--
-                                <a href="/kontakt.php" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill">
-                                -->
                             </div>
                             @if($investment->file_brochure)
                                 <div class="mt-2">
