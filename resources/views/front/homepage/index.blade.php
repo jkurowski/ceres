@@ -32,6 +32,7 @@
     <!- End of Hero -->
 
     <main>
+        @if(1 == 2)
         <!- Search form -->
         <section class="offer-search pb-0">
             <div class="container">
@@ -131,6 +132,7 @@
             </div>
         </section>
         <!- End of Search form -->
+        @endif
 
         <!- Investment list -->
         <section class="mt-150">
@@ -217,7 +219,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="o-firmie.html" class="bttn bttn-sm bttn-brown-outline d-inline-flex bttn-arrow mt-5">Więcej o firmie<img src="{{ asset('img/svg/right-arrow-brown.svg') }}" alt="" width="33" height="35" class="ms-5"></a>
+                        <a href="{{ route('about') }}" class="bttn bttn-sm bttn-brown-outline d-inline-flex bttn-arrow mt-5">Więcej o firmie<img src="{{ asset('img/svg/right-arrow-brown.svg') }}" alt="" width="33" height="35" class="ms-5"></a>
                     </div>
                     <div class="col-12 col-xl-6">
                         <div class="row h-100">
