@@ -18,7 +18,7 @@ class InvestmentBuildingPropertyController extends Controller
 
     public function __construct()
     {
-        $this->pageId = 8;
+        $this->pageId = 3;
     }
 
     public function index($slug, Building $building, $buildingSlug, Floor $floor, $floorSlug, Property $property)

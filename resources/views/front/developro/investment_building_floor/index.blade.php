@@ -8,7 +8,7 @@
         $seoTitle = $page->meta_title;
     }
     else {
-        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name .' - '. $floor->name;
+        $seoTitle = settings()->get("page_title") . ' - ' . $page->title . ' - ' . $investment->name .' - '. $building->name .' - '.$floor->name;
     }
 
     if(!empty($investment->meta_description)) {
@@ -31,93 +31,39 @@
 
 @section('content')
     <main>
-        <section class="position-relative page-hero-section page-hero-section-small">
-            <div class="position-absolute top-0 start-0 w-100 h-100">
-                @if($investment->file_header)
-                    <img src="{{ asset('investment/header/'.$investment->file_header) }}" alt="" width="1920" height="386" loading="eager" decoding="async" class="w-100 h-100 object-fit-cover">
-                    <div style="position: absolute;opacity: 0.7;width: 100%;height: 100%;top: 0;left: 0;background-image: linear-gradient(#000, rgba(255, 255, 255, 0) {{ $investment->gradient_header ?: '100%' }});"></div>
-                @else
-                    <div style="position: absolute;width: 100%;height: 100%;top: 0;left: 0;background:#052748"></div>
-                @endif
-            </div>
-            <div class="container isolation-isolate">
-                <div class="row row-gap-10 justify-content-center">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb small text-white" data-aos="fade" class="aos-init aos-animate">
-                            <ol class="breadcrumb opacity-50">
-                                <li class="breadcrumb-item">
-                                    <a href="/"
-                                       style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">Strona
-                                        główna</a>
-                                </li>
-                                <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{ route('developro.show', $investment->slug) }}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $investment->name }}</a>
-                                </li>
-                                <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                    <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">{{ $building->name }}</a>
-                                </li>
-                                <li class="breadcrumb-item" style="--bs-breadcrumb-divider-color: var(--bs-white);">
-                                     <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)])}}" style="--bs-secondary: var(--bs-white);--bs-breadcrumb-item-active-color: var(--bs-white);">
-                                            {{ $floor->name }}
-                                    </a>
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-
-                    @isset($investment->entry_content)
-                        <div
-                            class="col-12 col-md-8 text-white text-center">
-                            <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
-                            <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $investment->entry_content }}</p>
-                        </div>
-                    @else
-                        <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-white text-center">
-                            @isset($investment->name)
-                                <h1 class="h2 mb-3 text-uppercase" data-aos="fade-up">{{ $investment->name }}</h1>
-                            @endisset
-                            @isset($page->title_text)
-                                <p class="text-pretty" data-aos="fade-up" data-aos-delay="200">{{ $building->name }} - {{ $floor->name }}</p>
-                            @endisset
-                        </div>
-                    @endisset
+        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '. $building->number .' - '.$floor->name, 'pageDesc' => $investment->name, 'class' => 'sm'])
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    @include('front.investments.submenu', ['menuIds' => $investment->menu, 'activeMenuId' => 2])
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="container">
+            <div id="planNav" class="row">
+                <div class="col-6 col-sm-4">
+                    @if($prev_floor)
+                        <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $prev_floor, 'floorSlug' => Str::slug($prev_floor->name)])}}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">{{$prev_floor->name}}</a>
+                    @endif
+                </div>
+
+                <div class="col-12 col-sm-4 text-center order-first order-sm-0">
+
+                    <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex" style="--bs-btn-hover-color: var(--bs-white);">Plan budunku</a>
+
+                </div>
+
+                <div class="col-6 col-sm-4 text-end">
+                    @if($next_floor)
+                        <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $next_floor, 'floorSlug' => Str::slug($next_floor->name)])}}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">
+                            {{$next_floor->name}}</a>
+                    @endif
+                </div>
+            </div>
+        </div>
 
         <section id="plan">
-            <div class="container">
-                <div id="planNav" class="row">
-                    <div class="col-6 col-sm-4">
-                        @if($prev_floor)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $prev_floor, 'floorSlug' => Str::slug($prev_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                                <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor"></path>
-                                </svg>
-                                {{$prev_floor->name}}
-                            </a>
-                        @endif
-                    </div>
-
-                    <div class="col-12 col-sm-4 text-center order-first order-sm-0">
-
-                        <a href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">Plan budunku</a>
-
-                    </div>
-
-                    <div class="col-6 col-sm-4 text-end">
-                        @if($next_floor)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $next_floor, 'floorSlug' => Str::slug($next_floor->name)])}}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                                {{$next_floor->name}}
-                                <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                    <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor"></path>
-                                </svg>
-                            </a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-10">
@@ -185,7 +131,7 @@
                             <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Najczęściej odwiedzane</option>
                         </select>
 
-                        <ul class="nav justify-content-end d-none d-md-flex" role="tablist">
+                        <ul class="nav justify-content-end d-none " role="tablist">
                             <li class="nav-item layout-switcher" role="presentation">
                                 <button class="nav-link active opacity-25" id="list-layout" type="button" aria-selected="true">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
@@ -244,9 +190,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row mt-30">
+                <div class="row mt-4">
                     <div class="col-12">
-                        <div id="layout-container" class="grid-layout">
+                        <div id="layout-container" class="list-layout">
                             @foreach($properties as $index => $p)
                                 <x-property-new-list-item :p="$p" :index="$index" :sort="$sort"/>
                             @endforeach

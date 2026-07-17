@@ -12,21 +12,14 @@
                     <div class="row w-100">
                         <div class="col-12">
                             <div class="row">
-                                <div class="d-flex d-flex align-items-center gap-2 property-list-item-info property-list-item-city">
-                                    <img src="{{ asset('img/location.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> [ Miasto ]
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
                                 <div class="col-4 d-flex align-items-center gap-2 property-list-item-info">
-                                    <img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->floor->name }}
+                                    <img src="{{ asset('img/svg/property-data-floor.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->floor->name }}
                                 </div>
                                 <div class="col-4 d-flex align-items-center gap-2 property-list-item-info p-0">
-                                    <img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->area }} m<sup>2</sup>
+                                    <img src="{{ asset('img/svg/property-data-area.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->area }} m<sup>2</sup>
                                 </div>
                                 <div class="col-4 d-flex align-items-center gap-2 property-list-item-info p-0">
-                                    <img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->rooms }}
+                                    <img src="{{ asset('img/svg/property-data-rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->rooms }}
                                 </div>
                             </div>
                         </div>

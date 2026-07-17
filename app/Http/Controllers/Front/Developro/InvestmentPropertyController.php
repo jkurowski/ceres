@@ -14,7 +14,7 @@ class InvestmentPropertyController extends Controller
 
     public function __construct()
     {
-        $this->pageId = 8;
+        $this->pageId = 3;
     }
 
 

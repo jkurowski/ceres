@@ -142,7 +142,7 @@
                             <option value="views_desc" {{ in_array('views_desc', $activeSorts) ? 'selected' : '' }}>Najczęściej odwiedzane</option>
                         </select>
 
-                        <ul class="nav justify-content-end d-none d-md-flex" role="tablist">
+                        <ul class="nav justify-content-end d-none" role="tablist">
                             <li class="nav-item layout-switcher" role="presentation">
                                 <button class="nav-link active opacity-25" id="list-layout" type="button" aria-selected="true">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="29" viewBox="0 0 34 29">
@@ -201,7 +201,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row mt-30">
+                <div class="row mt-4">
                     <div class="col-12">
                         <div id="layout-container" class="list-layout">
                             @foreach($properties as $index => $p)
