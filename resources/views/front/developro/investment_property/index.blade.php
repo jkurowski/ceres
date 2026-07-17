@@ -686,50 +686,9 @@
     <link href="{{ asset('/css/history.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/js/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/bootstrap-select/bootstrap-select.min.js') }}" charset="utf-8"></script>
-
-    <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('/js/plan/tip.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('/js/plan/floor.js') }}" charset="utf-8"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const anchor = document.querySelector('.widget3dEstate');
-            if (anchor) {
-                anchor.classList.add(
-                    'btn',
-                    'btn-primary',
-                    'btn-with-icon',
-                    'd-inline-flex',
-                    'align-items-center',
-                    'gap-1',
-                    'justify-content-center',
-                    'px-3',
-                    'min-w-max-content',
-                    'flex-fill'
-                );
-                anchor.innerHTML = 'Wirtualny Spacer <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>';
-            }
-        });
-    </script>
-    <div id="root3dEstate"></div>
-    <script>
-        (function(w, d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0], a = {renderDom: function(){}};
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.async=!!0;
-            js.src = 'https://implementations.3destate.pl/sdk.js';
-            fjs.parentNode.insertBefore(js, fjs);
-            w.API_IMPLEMENTATION_3D_ESTATE = a;
-            w.websiteCode = "kalter--agencja-regal-estate-";
-        }(window, document, 'script', 'jssdk-implementation-3destate'));
-
-        window.API_IMPLEMENTATION_3D_ESTATE.renderDom();
-    </script>
-    <script src="https://implementations.3destate.pl/model360.js"></script>
     <script>
         const button = document.querySelector('#addToFav');
-        const baseUrl = "https://www.kalternieruchomosci.pl/";
-        //const baseUrl = "https://newkalter.test/";
+        const baseUrl = "https://www.ceresdevelopment.pl/";
 
         button.addEventListener('click', function() {
             const xhr = new XMLHttpRequest();
@@ -1066,7 +1025,3 @@
         }
     </script>
 @endpush
-
-@section('schema')
-
-@endsection
