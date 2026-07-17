@@ -50,7 +50,7 @@
                     <ul class="mb-0 list-unstyled">
                         <li><a href="tel:+48602293025">+48 602 293 025</a></li>
                         <li><a href="tel:+48600897075">+48 600 897 075</a></li>
-                        <li><a href="mailto:sprzedaz@sosnowy-jablonna.pl">Wyślij wiadomość</a></li>
+                        <li><a href="mailto:sprzedaz@ceresdevelopment.pl">Wyślij wiadomość</a></li>
                     </ul>
                 </div>
             </div>
