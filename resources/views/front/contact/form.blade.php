@@ -4,10 +4,10 @@
             <div class="col-12">
                 <h2><img src="{{ asset('img/square-point.svg') }}" alt="">KONTAKT</h2>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-xl-6">
                 <h3>Masz pytania? <br><span>Skontaktuj się z nami!</span></h3>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-xl-6">
                 <p>Masz pytania dotyczące mieszkań lub inwestycji? <br>Skontaktuj się z nami - chętnie doradzimy i pomożemy znaleźć najlepsze rozwiązanie</p>
             </div>
         </div>

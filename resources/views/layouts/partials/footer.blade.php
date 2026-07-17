@@ -1,8 +1,8 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <div class="footer-box pe-5">
+            <div class="col-12 col-xl-4 mb-5 mb-xl-0">
+                <div class="footer-box pe-xl-5 footer-box-logo">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="257" height="67" class="mb-4">
                     <p>Rodzinna firma deweloperska specjalizująca się <br>w kameralnym budownictwie wielorodzinnym</p>
                     <div class="social-media mt-4">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-6 col-md-3 col-xl-2 mb-4 mb-lg-0">
                 <div class="footer-box">
                     <h6>MENU</h6>
                     <ul class="mb-0 list-unstyled">
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-6 col-md-3 col-xl-2 mb-4 mb-lg-0">
                 <div class="footer-box">
                     <h6>INWESTYCJE</h6>
                     <ul class="mb-0 list-unstyled">
@@ -32,7 +32,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-6 col-md-3 col-xl-2 mb-4 mb-lg-0">
                 <div class="footer-box">
                     <h6>INFORMACJE</h6>
                     <ul class="mb-0 list-unstyled">
@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-6 col-md-3 col-xl-2">
                 <div class="footer-box">
                     <h6>KONTAKT</h6>
                     <ul class="mb-0 list-unstyled">
@@ -53,8 +53,8 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-4 mb-5">
-            <div class="col-10">
+        <div class="row justify-content-center mt-0 mt-sm-4 mb-0 mb-sm-5">
+            <div class="col-12 col-sm-10">
                 <small>Materiały, wizualizacje, rzuty, ceny oraz informacje prezentowane na stronie internetowej mają charakter wyłącznie informacyjny i nie stanowią oferty handlowej w rozumieniu art. 66 § 1 Kodeksu cywilnego. Szczegółowe informacje dotyczące aktualnej oferty, dostępności lokali oraz warunków sprzedaży można uzyskać w biurze sprzedaży</small>
             </div>
         </div>

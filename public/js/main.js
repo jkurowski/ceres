@@ -450,7 +450,23 @@ function dropdownMobile() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const header = document.querySelector('header');
+    if (menuToggle && mainNav && header) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = header.classList.toggle('menu-open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
 
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 
     // Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
@@ -486,7 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // add .scrolled class to header when page is scrolled
-    const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY >= 100) {

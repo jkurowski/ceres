@@ -1,16 +1,16 @@
 <div class="header-holder">
     <header>
         <div class="container">
-            <div class="row">
-                <div class="col-3">
+            <div class="row align-items-center">
+                <div class="col-auto">
                     <div id="logo">
                         <a href="/">
                             <img src="{{ asset('img/logo.png') }}" alt="" width="257" height="67">
                         </a>
                     </div>
                 </div>
-                <div class="col-6">
-                    <nav>
+                <div class="col">
+                    <nav id="main-nav">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
                             <li><a href="{{ route('developro.index') }}">Oferta</a></li>
@@ -25,10 +25,15 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-3">
+                <div class="col-auto ms-auto d-flex align-items-center gap-3">
                     <div class="header-cta">
                         <a href="tel:+48602293025"><img src="{{ asset('img/svg/phone.svg') }}" alt="Numer telefonu"> +48 602 293 025</a>
                     </div>
+                    <button type="button" class="menu-toggle d-xl-none" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </div>

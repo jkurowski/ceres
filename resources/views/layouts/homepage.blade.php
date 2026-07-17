@@ -39,9 +39,7 @@
 </h1>
     @include('layouts.partials.header')
 
-<main>
-    @yield('content')
-</main>
+@yield('content')
 
     @include('layouts.partials.footer')
 
@@ -70,6 +68,20 @@
             arrows: true,
             prevArrow: '<button type="button" class="slick-prev"><img src="svg/slider-arrow-left.svg" alt="Previous"></button>',
             nextArrow: '<button type="button" class="slick-next"><img src="svg/slider-arrow-right.svg" alt="Next"></button>',
+            responsive: [
+                {
+                    breakpoint: 991.98,
+                    settings: {
+                        centerPadding: '40px',
+                    }
+                },
+                {
+                    breakpoint: 575.98,
+                    settings: {
+                        centerPadding: '0px',
+                    }
+                }
+            ]
         });
 
         heroSlider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
