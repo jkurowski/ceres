@@ -111,7 +111,7 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                    <form method="post" id="contact-form" action="{{ route('contact.send') }}" class="validateForm">
+                    <form method="post" id="contact-form" action="{{ route('front.contact.send') }}" class="validateForm">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-12">
@@ -154,20 +154,40 @@
                                 <div class="rodo-obligation">
                                     <p>Na podstawie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (Dz. Urz. UE L 119 z 04.05.2016) informujemy, iż przesyłając wiadomość za pomocą formularza kontaktowego wyrażacie Państwo zgodę na (polityka informacyjna):</p>
                                 </div>
+                                @if($obligation)
+                                    <div class="rodo-obligation-dynamic">
+                                        {!! $obligation->obligation !!}
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="col-12 rodo-rules mt-3 ">
-                                @foreach ($rules as $r)
-                                    <div class="form-check @error('rule_'.$r->id) is-invalid @enderror">
-                                        <input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">
-                                        <label for="rule_{{$r->id}}" class="form-check-label">
-                                            {!! $r->text !!}
+                                @if($rules->isEmpty())
+                                    <div class="form-check">
+                                        <input name="rule_1" id="rule_1" value="1" type="checkbox" class="form-check-input validate[required]" data-prompt-position="topLeft:0">
+                                        <label for="rule_1" class="form-check-label">
+                                            <p>Zapoznałem się z Polityką prywatności i zawartą w niej Informacją na temat przetwarzania danych osobowych</p>
                                         </label>
-                                        @error('rule_'.$r->id)
-                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                                        @enderror
                                     </div>
-                                @endforeach
+                                    <div class="form-check mt-3">
+                                        <input name="rule_2" id="rule_2" value="1" type="checkbox" class="form-check-input validate[required]" data-prompt-position="topLeft:0">
+                                        <label for="rule_2" class="form-check-label">
+                                            <p>Wyrażam zgodę na otrzymywanie od Ceres Development sp. z o.o. informacji marketingowych, przekazywanych za pomocą telekomunikacyjnych urządzeń końcowych oraz tzw. automatycych systemów wywołujących drogą elektroniczną na podany powyżej adres e-mail</p>
+                                        </label>
+                                    </div>
+                                @else
+                                    @foreach ($rules as $r)
+                                        <div class="form-check @error('rule_'.$r->id) is-invalid @enderror">
+                                            <input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">
+                                            <label for="rule_{{$r->id}}" class="form-check-label">
+                                                {!! $r->text !!}
+                                            </label>
+                                            @error('rule_'.$r->id)
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
 
                             <div class="col-12">
