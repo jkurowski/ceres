@@ -5,11 +5,13 @@
                 <div class="footer-box pe-xl-5 footer-box-logo">
                     <img src="{{ asset('img/logo.png') }}" alt="" width="257" height="67" class="mb-4">
                     <p>Rodzinna firma deweloperska specjalizująca się <br>w kameralnym budownictwie wielorodzinnym</p>
+                    @if(1 == 2)
                     <div class="social-media mt-4 d-none">
                         <a href=""><img src="{{ asset('img/svg/facebook.svg') }}" alt="Ikonka Facebook"></a>
                         <a href=""><img src="{{ asset('img/svg/instagram.svg') }}" alt="Ikonka Instagram"></a>
                         <a href=""><img src="{{ asset('img/svg/linkedin.svg') }}" alt="Ikonka Linkedin"></a>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-6 col-md-3 col-xl-2 mb-4 mb-lg-0">
