@@ -31,6 +31,7 @@
 
 @section('content')
     <main>
+        @if(1 == 2)
         <section class="position-relative page-hero-section page-hero-section-small">
             <div class="position-absolute top-0 start-0 w-100 h-100">
                 @if($investment->file_header)
@@ -95,6 +96,7 @@
                 </div>
             </div>
         </section>
+        @endif
 
         <section class="pt-40 pb-0">
             <div class="container">
@@ -111,31 +113,21 @@
                                                             Str::slug($prev->name),
                                                             number2RoomsName($prev->rooms, true),
                                                             round(floatval($prev->area), 2).'-m2'
-                                                        ]) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
-                            <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" />
-                            </svg>
-                            Poprzednie
-                        </a>
+                                                        ]) }}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Poprzednie</a>
                         @endif
 
                         @if($investment->type == 2 && $prev)
-                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $prev, Str::slug($prev->name), number2RoomsName($prev->rooms, true), round(floatval($prev->area), 2).'-m2']) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center gap-1">
-                            <svg class="me-2 me-sm-3 me-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(362.073 -672.938) rotate(180)" fill="currentColor" />
-                            </svg>
-                            Poprzednie
-                        </a>
+                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $prev, Str::slug($prev->name), number2RoomsName($prev->rooms, true), round(floatval($prev->area), 2).'-m2']) }}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Poprzednie</a>
                         @endif
                     </div>
                     <div class="col-12 col-sm-4 text-center order-first order-sm-0">
                         @if($investment->type == 1)
-                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">
+                            <a href="{{route('developro.building.floor', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name), $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex" style="--bs-btn-hover-color: var(--bs-white);">
                                 Plan piętra
                             </a>
                         @endif
                         @if($investment->type == 2)
-                            <a href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="btn btn-outline-primary" style="--bs-btn-hover-color: var(--bs-white);">
+                            <a href="{{route('developro.floor', [$investment->slug, $floor, 'floorSlug' => Str::slug($floor->name)])}}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex" style="--bs-btn-hover-color: var(--bs-white);">
                                 Plan piętra
                             </a>
                         @endif
@@ -152,20 +144,10 @@
                                                             Str::slug($next->name),
                                                             number2RoomsName($next->rooms, true),
                                                             round(floatval($next->area), 2).'-m2'
-                                                        ]) }}" class="btn btn-primary px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                            Następne
-                            <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-                        </a>
+                                                        ]) }}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Następne</a>
                         @endif
                         @if($investment->type == 2 && $next)
-                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $next, Str::slug($next->name), number2RoomsName($next->rooms, true), round(floatval($next->area), 2).'-m2']) }}" class="btn btn-primary  px-3 min-w-max-content flex-fill d-inline-flex align-items-center  gap-1">
-                            Następne
-                            <svg class="ms-2 ms-sm-3 ms-md-4" xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                            </svg>
-                        </a>
+                        <a href="{{ route('developro.property', [$investment->slug, $floor, Str::slug($floor->name), $next, Str::slug($next->name), number2RoomsName($next->rooms, true), round(floatval($next->area), 2).'-m2']) }}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Następne</a>
                         @endif
                     </div>
                 </div>
@@ -257,7 +239,7 @@
                                     @endif
                             @else
                                 @if($investment->show_prices)
-                                    <p class="h4 mb-1 ff-secondary row">
+                                    <p class="h4 mb-1">
                                         <span class="col-12">
                                             @if($property->price_brutto && $property->area)
                                                 <span class="fs-4 d-block mt-4">Szacowane ceny od: @money(($property->price_brutto / $property->area)) / m<sup>2</sup></span>
@@ -267,61 +249,52 @@
                                @endif
                             @endif
 
-                            <div class="mb-50 mt-4">
-                                <table class="text-sm-down-small w-100">
+                            <div class="mt-4">
+                                <table class="table">
                                     <tbody>
                                     <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/tile.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                         <td class="pb-2">Piętro</td>
                                         <td class="text-end pb-2">{{$floor->name}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="td-with-icon pb-2"><img src="{{ asset('img/blueprint.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                         <td class="pb-2">Metraż</td>
                                         <td class="text-end pb-2">{{$property->area}} m<sup>2</sup></td>
                                     </tr>
                                     @if($property->type == 1)
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                             <td class="pb-2">Liczba Pokoi</td>
                                             <td class="text-end pb-2">{{$property->rooms}}</td>
                                         </tr>
                                         @if($property->kitchen != 0)
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/kitchen.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                             <td class="pb-2">Aneks/Kuchnia</td>
                                             <td class="text-end pb-2">{{ kitchenType($property->kitchen) }}</td>
                                         </tr>
                                         @endif
                                         <tr>
-                                            <td class="td-with-icon pb-2"><img src="{{ asset('img/window.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                             <td class="pb-2">Wystawa okienna</td>
                                             <td class="text-end pb-2">{{ getWindowDirections($property->window) }}</td>
                                         </tr>
                                         @if($property->terrace_area)
                                             <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/terrace.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                                 <td class="pb-2">Taras</td>
                                                 <td class="text-end pb-2">{{$property->terrace_area}} m<sup>2</sup></td>
                                             </tr>
                                         @endif
                                         @if($property->garden_area)
                                             <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                                 <td class="pb-2">Ogródek</td>
                                                 <td class="text-end pb-2">{{$property->garden_area}} m<sup>2</sup></td>
                                             </tr>
                                         @endif
                                         @if($property->balcony_area)
                                             <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                                 <td class="pb-2">Balkon</td>
                                                 <td class="text-end pb-2">{{$property->balcony_area}} m<sup>2</sup></td>
                                             </tr>
                                         @endif
                                         @if($property->loggia_area)
                                             <tr>
-                                                <td class="td-with-icon pb-2"><img src="{{ asset('img/shovels.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="12" height="12"></td>
                                                 <td class="pb-2">Loggia</td>
                                                 <td class="text-end pb-2">{{$property->loggia_area}} m<sup>2</sup></td>
                                             </tr>
@@ -332,7 +305,7 @@
                             </div>
 
                             @if($investment->status != 3)
-                                @if ($property->status == 1 && $property->type == 1)
+                                @if ($property->status == 99 && $property->type == 1)
                                     <div class="property-related">
 
                                         @if($property->history_info)
@@ -404,7 +377,7 @@
                                 @endif
                                 <div class="mb-3"></div>
 
-                                @if($property->priceComponents && $property->status == 1)
+                                @if($property->priceComponents && $property->status == 99)
                                 <div class="row">
                                     <div class="col-12">
                                         <p>Dodatkowe koszty i opcje:</p>
@@ -436,30 +409,19 @@
                             <div class="mb-3"></div>
                             <div class="d-flex flex-wrap gap-2">
                                 @if($investment->status != 3)
-                                    <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o ofertę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
-                                    </a>
+                                    <a href="#kontakt" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o ofertę</a>
                                 @else
-                                    <a href="#kontakt" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1">Zapytaj o przewidywaną cenę <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg>
-                                    </a>
+                                    <a href="#kontakt" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Zapytaj o przewidywaną cenę</a>
                                 @endif
 
                                 @if($property->file_pdf)
-                                    <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="btn btn-primary btn-with-icon d-inline-flex align-items-center gap-1 justify-content-center px-3 min-w-max-content flex-fill" target="_blank">
-                                        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="11.109" height="12.96" viewBox="0 0 11.109 12.96">
-                                            <path id="Icon_metro-file-pdf" data-name="Icon metro-file-pdf" d="M13.188,4.952a1.683,1.683,0,0,1,.347.55,1.669,1.669,0,0,1,.145.636V14.47a.691.691,0,0,1-.694.694H3.265a.691.691,0,0,1-.694-.694V2.9A.691.691,0,0,1,3.265,2.2h6.48a1.67,1.67,0,0,1,.636.145,1.683,1.683,0,0,1,.55.347ZM9.977,3.187V5.906H12.7a.79.79,0,0,0-.159-.3L10.273,3.346a.79.79,0,0,0-.3-.159Zm2.777,11.051V6.832H9.745a.691.691,0,0,1-.694-.694V3.129H3.5V14.238h9.257ZM9.036,9.949a5.5,5.5,0,0,0,.608.405,7.177,7.177,0,0,1,.846-.051q1.063,0,1.28.354a.35.35,0,0,1,.014.376.021.021,0,0,1-.007.014l-.014.014v.007q-.043.275-.513.275a2.983,2.983,0,0,1-.832-.145,5.274,5.274,0,0,1-.94-.383,13.023,13.023,0,0,0-2.835.6q-1.107,1.895-1.75,1.895a.421.421,0,0,1-.2-.051l-.174-.087-.043-.036a.3.3,0,0,1-.043-.26,1.571,1.571,0,0,1,.405-.662,3.5,3.5,0,0,1,.955-.7.106.106,0,0,1,.166.043.042.042,0,0,1,.014.029q.376-.615.774-1.425A11.038,11.038,0,0,0,7.5,8.271a5.846,5.846,0,0,1-.221-1.154A2.812,2.812,0,0,1,7.322,6.2q.08-.289.3-.289h.159a.3.3,0,0,1,.253.108.578.578,0,0,1,.065.492.157.157,0,0,1-.029.058.188.188,0,0,1,.007.058v.217a9.471,9.471,0,0,1-.1,1.389A3.659,3.659,0,0,0,9.036,9.949ZM4.871,12.922a3.193,3.193,0,0,0,.991-1.143,4.123,4.123,0,0,0-.633.608A2.4,2.4,0,0,0,4.871,12.922ZM7.749,6.268a2.151,2.151,0,0,0-.014.955q.007-.051.051-.318,0-.022.051-.311a.163.163,0,0,1,.029-.058.021.021,0,0,1-.007-.014.015.015,0,0,0,0-.011.015.015,0,0,1,0-.011.416.416,0,0,0-.094-.26.021.021,0,0,1-.007.014v.014Zm-.9,4.781a10.608,10.608,0,0,1,2.054-.586,1.091,1.091,0,0,1-.094-.069,1.3,1.3,0,0,1-.116-.1,3.831,3.831,0,0,1-.918-1.273,9.665,9.665,0,0,1-.6,1.425q-.217.405-.325.6Zm4.672-.116a1.731,1.731,0,0,0-1.013-.174,2.736,2.736,0,0,0,.9.2.7.7,0,0,0,.13-.007s0-.012-.014-.022Z" transform="translate(-2.571 -2.203)" fill="#fff" />
-                                        </svg>
-
-                                        Pobierz kartę
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062">
-                                            <path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" />
-                                        </svg>
-                                    </a>
+                                    <a href="{{ asset('/investment/property/pdf/'.$property->file_pdf) }}" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex" target="_blank">Pobierz kartę</a>
                                 @endif
                                 @if($property->walk_3d)
                                     {!! $property->walk_3d !!}
                                 @endif
 
-                                @if($investment->status != 3)
+                                @if($investment->status == 99)
                                 <button id="addToFav" class="btn btn-primary btn-with-icon px-3 min-w-max-content flex-fill d-inline-flex align-items-center justify-content-center gap-1" data-id="{{$property->id}}">Dodaj do schowka <svg xmlns="http://www.w3.org/2000/svg" width="6.073" height="11.062" viewBox="0 0 6.073 11.062"><path id="chevron_right_FILL0_wght100_GRAD0_opsz24" d="M360.989-678.469,356-683.458l.542-.542,5.531,5.531-5.531,5.531L356-673.48Z" transform="translate(-356 684)" fill="currentColor" /></svg></button>
                                 @endif
                                 <!--
@@ -543,6 +505,7 @@
         @endif
 
         <!-- Podobne mieszkania -->
+            @if(1 == 2)
         <section>
             <div class="container">
                 <div class="row">
@@ -716,6 +679,7 @@
                 @endforeach
             </div>
         </section>
+            @endif
     </main>
 @endsection
 @push('scripts')
