@@ -9,6 +9,7 @@ use DOMDocument;
 use DOMXPath;
 use League\Csv\Writer;
 use SplTempFileObject;
+use Illuminate\Support\Collection;
 
 class IndexController extends Controller
 {
@@ -505,7 +506,11 @@ class IndexController extends Controller
 
                 //Rodzaj pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali (piwnice, garaże, komórki lokatorskie, strychy, miejsce postojowe)
                 ($property->type == 1)
-                    ? ($property->related_types->implode(', ') ?? 'X')
+                    ? (
+                $property->related_types instanceof Collection
+                    ? ($property->related_types->implode(', ') ?: 'X')
+                    : ($property->related_types ?: 'X')
+                )
                     : 'X',
 
                 //Oznaczenie pomieszczeń przynależnych, o których mowa w art. 2 ust. 4 ustawy z dnia 24 czerwca 1994 r. o własności lokali
