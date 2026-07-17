@@ -59,7 +59,7 @@
             </div>
         </section>
 
-        @include('front.contact.form')
+        @include('front.contact.form', ['page_name' => $page->name])
 
         <section id="" class="p-0">
             <div class="container">
