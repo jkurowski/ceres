@@ -479,9 +479,9 @@ header {
             border-radius: 0;
             border:0;
             margin:0;
-            background: white;
             font-size: 17px;
-            color: #737888;
+            background: #f0f0f0;
+            color: #5b4232;
             text-align: left;
             padding: 10px 15px;
             &:hover {
@@ -515,6 +515,33 @@ header {
         position: absolute;
         right: 17px;
         top: 14px;
+    }
+
+    &.single-offer-search {
+        margin-top: -120px;
+        z-index: 10;
+        position: relative;
+        .search-field {
+            padding: 0 24px 0 0;
+            &.border-0 {
+                padding: 0;
+            }
+        }
+        label {
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .slider-label small {
+            display: block;
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .bttn.bttn-xs {
+            font-size: 19px;
+            padding: 10px;
+            height: auto;
+            text-transform: uppercase;
+        }
     }
 
 }
@@ -1530,6 +1557,74 @@ footer {
     .price-per-m {
         font-size: 16px;
         line-height: 1;
+    }
+}
+
+/* Slider range
+================================================== */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    padding-top: 15px;
+}
+.slider-track {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    top: 20px;
+}
+.slider-range {
+    position: absolute;
+    height: 5px;
+    background: #c4b387;
+    border-radius: 5px;
+    top: 20px;
+}
+.slider-input {
+    position: absolute;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    top: 15px;
+    margin: 0;
+    height: 15px;
+}
+.slider-input::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #75543f;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-appearance: none;
+}
+.slider-input::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #75543f;
+    cursor: pointer;
+    pointer-events: auto;
+    -moz-appearance: none;
+}
+.slider-label { font-size: 1rem; margin-bottom: 5px; display: block; width: 170px;line-height: normal}
+.slider-label small {display: block}
+.slider-col {
+    padding-top: 1.225rem;
+}
+@media (max-width: 575.98px) {
+    .slider-label {
+        font-size: 1rem;
+        margin-bottom: 0;
+        display: block;
+        width: 100%;
     }
 }
 

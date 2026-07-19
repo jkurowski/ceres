@@ -1,10 +1,10 @@
-<section class="single-investment-search search section-search pt-0 pb-3">
+<section class="offer-search pt-0 pb-4 single-offer-search">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-8">
                 <form
                     action="{{ Route::is(['developro.plan', 'developro.page', 'developro.mockup', 'developro.investment.news', 'developro.investment.news.show', 'developro.show']) ? route('developro.plan', $investment->slug) . '#properties' : '#properties' }}"
-                    class="bg-secondary text-white rounded d-block d-sm-flex row-gap-0 flex-wrap flex-sm-nowrap search-form"
+                    class="search-form p-4"
                     autocomplete="off"
                     method="get"
                 >
@@ -15,37 +15,79 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row row-gap-3 align-items-end px-30 py-3 w-md-100 pb-md-40 pb-20 toggle-searchform">
+                    <div class="row align-items-end toggle-searchform">
                         <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
                         @if($investment->room_range)
                             @php $rooms = explode(',', $investment->room_range) @endphp
                             <div class="@if($status != 3) col @else @if(!isset($is_floor)) col-12 col-sm-6 col-lg-3 @else col-12 col-lg-6 @endif @endif">
-                                <select name="rooms" id="rooms" class="form-select">
-                                    <option value="">Pokoje</option>
-                                    @foreach($rooms as $room)
-                                        <option value="{{ $room }}" @if(request()->input('rooms') == $room) selected @endif>{{ $room }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="search-field">
+                                    <label for="rooms">Pokoje</label>
+                                    <div class="dropdown mt-2">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="rooms">
+                                            {{ request()->input('rooms') ?: 'Wszystkie' }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item @if(!request()->input('rooms')) active @endif" href="#" data-value="">Wszystkie</a></li>
+                                            @foreach($rooms as $room)
+                                                <li><a class="dropdown-item @if(request()->input('rooms') == $room) active @endif" href="#" data-value="{{ $room }}">{{ $room }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="rooms" id="rooms" value="{{ request()->input('rooms') }}">
+                                </div>
                             </div>
                         @endif
 
                         @if(isset($is_building))
+                            @php
+                                $selectedFloor = $investment->floors->first(function ($f) {
+                                    return $f->type == 1 && (string) $f->id === (string) request()->input('floor');
+                                });
+                                $floorLabel = 'Wszystkie';
+                                if ($selectedFloor) {
+                                    $floorLabel = ($selectedFloor->building_id != 0 && isset($selectedFloor->building))
+                                        ? $selectedFloor->building->name . ' - ' . $selectedFloor->name
+                                        : $selectedFloor->name;
+                                }
+                            @endphp
                             <div class="@if($status != 3) col @else col-12 col-sm-6 col-lg-3 @endif">
-                                <select name="floor" id="floor" class="form-select">
-                                    <option value="">Piętro</option>
-                                    {!! floorToSelect($investment->floors) !!}
-                                </select>
+                                <div class="search-field">
+                                    <label for="floors">Piętro</label>
+                                    <div class="dropdown mt-2">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="floors">
+                                            {{ $floorLabel }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item @if(!request()->input('floor')) active @endif" href="#" data-value="">Wszystkie</a></li>
+                                            {!! floorToDropdown($investment->floors) !!}
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="floor" id="floor" value="{{ request()->input('floor') }}">
+                                </div>
                             </div>
                         @endif
 
                         @if($status != 3)
+                            @php
+                                $statusLabels = [1 => 'Na sprzedaż', 2 => 'Rezerwacja', 3 => 'Sprzedane'];
+                                $statusLabel = $statusLabels[(int) request()->input('status')] ?? 'Wszystkie';
+                            @endphp
                             <div class="col">
-                                <select name="status" id="status" class="form-select">
-                                    <option value="">Status</option>
-                                    <option value="1" @if(request()->input('status') == 1) selected @endif>Na sprzedaż</option>
-                                    <option value="2" @if(request()->input('status') == 2) selected @endif>Rezerwacja</option>
-                                    <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
-                                </select>
+                                <div class="search-field border-0">
+                                    <label for="status">Status</label>
+                                    <div class="dropdown mt-2">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="status">
+                                            {{ $statusLabel }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item @if(!request()->input('status')) active @endif" href="#" data-value="">Wszystkie</a></li>
+                                            <li><a class="dropdown-item @if(request()->input('status') == 1) active @endif" href="#" data-value="1">Na sprzedaż</a></li>
+                                            <li><a class="dropdown-item @if(request()->input('status') == 2) active @endif" href="#" data-value="2">Rezerwacja</a></li>
+                                            <li><a class="dropdown-item @if(request()->input('status') == 3) active @endif" href="#" data-value="3">Sprzedane</a></li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="status" id="status" value="{{ request()->input('status') }}">
+                                </div>
                             </div>
                         @endif
 
@@ -89,13 +131,10 @@
 
                     </div>
                     <div class="flex-fill toggle-searchform">
-                        <button type="submit" class="btn btn-primary w-100 h-100 fs-14 text-uppercase px-sm-4 d-flex align-items-center justify-content-center flex-sm-column gap-2 gap-sm-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21.631" height="21.636" viewBox="0 0 21.631 21.636">
+                        <button type="submit" class="bttn bttn-arrow bttn-xs bttn-gold d-inline-flex w-100 mt-3 justify-content-center">
+                            Szukaj <svg xmlns="http://www.w3.org/2000/svg" width="21.631" height="21.636" viewBox="0 0 21.631 21.636">
                                 <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M25.877,24.563l-6.016-6.072a8.573,8.573,0,1,0-1.3,1.318l5.977,6.033a.926.926,0,0,0,1.307.034A.932.932,0,0,0,25.877,24.563ZM13.124,19.882A6.77,6.77,0,1,1,17.912,17.9,6.728,6.728,0,0,1,13.124,19.882Z" transform="translate(-4.5 -4.493)" fill="#fff" />
                             </svg>
-                            <span>
-                              Szukaj
-                          </span>
                         </button>
                     </div>
                 </form>
@@ -154,6 +193,29 @@
 
             initDualSlider("area-slider-container", "area-min-input", "area-max-input", "area_min", "area_max", "area-slider-range", "area-val");
             initDualSlider("price-slider-container", "price-min-input", "price-max-input", "price_min", "price_max", "price-slider-range", "price-val", true);
+
+            document.querySelectorAll(".search-form .search-field .dropdown").forEach(function (dropdown) {
+                const wrapper = dropdown.closest(".search-field");
+                const hiddenInput = wrapper ? wrapper.querySelector('input[type="hidden"]') : null;
+                const button = dropdown.querySelector(".dropdown-toggle");
+                const items = dropdown.querySelectorAll(".dropdown-item");
+
+                if (!hiddenInput || !button) {
+                    return;
+                }
+
+                items.forEach(function (item) {
+                    item.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        hiddenInput.value = item.dataset.value;
+                        button.textContent = item.textContent.trim();
+                        items.forEach(function (i) {
+                            i.classList.remove("active");
+                        });
+                        item.classList.add("active");
+                    });
+                });
+            });
         });
     </script>
     <style>.slider-label.slider-label-lg {width:290px}</style>

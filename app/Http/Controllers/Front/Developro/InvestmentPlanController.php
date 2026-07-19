@@ -29,7 +29,6 @@ class InvestmentPlanController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-
         // 🔥 wspólna funkcja sortowania
         $applySorting = function ($query) use ($request) {
             if ($request->filled('sort')) {

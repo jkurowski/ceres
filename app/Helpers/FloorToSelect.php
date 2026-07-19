@@ -37,3 +37,39 @@ if (!function_exists('floorToSelect')) {
         return $html;
     }
 }
+
+if (!function_exists('floorToDropdown')) {
+    /**
+     * Generate dropdown-menu <li> items for floor values from a relationship.
+     *
+     * @param Illuminate\Database\Eloquent\Collection|array $floors Collection or array of floor objects.
+     * @param string $valueField The field in the floor object to use as the value (e.g., 'id', 'name').
+     * @param string $labelField The field in the floor object to display as the label (e.g., 'name').
+     * @return string HTML for the dropdown-menu items.
+     */
+    function floorToDropdown($floors, string $valueField = 'id', string $labelField = 'name'): string
+    {
+        $html = '';
+
+        $floors = $floors->sortBy('position');
+
+        foreach ($floors as $floor) {
+            if ($floor->type == 1) {
+                $value = htmlspecialchars($floor->$valueField);
+                $label = htmlspecialchars($floor->$labelField);
+
+                if ($floor->building_id != 0 && isset($floor->building)) {
+                    $buildingName = htmlspecialchars($floor->building->name);
+                    $label = $buildingName . ' - ' . $label;
+                }
+
+                $active = request()->input('floor') == $value ? ' active' : '';
+                $html .= '<li><a class="dropdown-item' . $active . '" href="#" data-value="' . $value . '">';
+                $html .= $label;
+                $html .= '</a></li>';
+            }
+        }
+
+        return $html;
+    }
+}
