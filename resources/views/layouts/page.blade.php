@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=19072026" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=20072026" media="print" onload="this.media='all'">
 
     <!-- Preloads -->
     <link rel="preload" href="{{ asset('img/logo.png') }}" as="image" />
