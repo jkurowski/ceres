@@ -4,9 +4,13 @@
     if($p->id == 1) {
         $url = 'https://www.sosnowy-jablonna.pl';
         $target = '_blank';
+        $prices = '503.000,00 zł';
+        $area = '44';
     } else {
         $url = route('developro.plan', $p->slug);
         $target = '_self';
+        $prices = '339.000,00 zł';
+        $area = '24 - 86';
     }
 @endphp
 
@@ -54,7 +58,7 @@
 
                                 <div>
                                     <div class="small text-uppercase">ZAKRES METRAŻU:</div>
-                                    <div class="fw-bold">31 - 80 m<sup>2</sup></div>
+                                    <div class="fw-bold">{{ $area }} m<sup>2</sup></div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +68,7 @@
 
                                 <div>
                                     <div class="small text-uppercase">CENY OD:</div>
-                                    <div class="fw-bold">805.516,00 zł</div>
+                                    <div class="fw-bold">{{ $prices }}</div>
                                 </div>
                             </div>
                         </div>
