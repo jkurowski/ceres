@@ -20,11 +20,11 @@
 
     <!-- CSS (non-blocking) -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=19072026" media="print" onload="this.media='all'">
 
     <!-- fallback dla no-js -->
     <noscript>
-        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=19072026">
     </noscript>
 
     <!-- Preloads -->
@@ -100,6 +100,7 @@
     });
 </script>
 
+@if(1 == 2)
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
@@ -119,7 +120,7 @@
         .bindPopup('A pretty CSS popup.<br> Easily customizable.')
         .openPopup();
 </script>
-
+@endif
     {!! settings()->get("scripts_beforebody") !!}
 </body>
 </html>
