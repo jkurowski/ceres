@@ -75,7 +75,6 @@ class BuildingController extends Controller
 
     public function update(BuildingFormRequest $request, Investment $investment, Building $building)
     {
-
         $this->repository->update($request->validated(), $building);
 
         if ($request->hasFile('file')) {
