@@ -15,7 +15,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $slider = Slider::whereActive(1)->get();
+        $slider = Slider::whereActive(1)->orderBy('sort')->get();
 
         return view('front.homepage.index', [
             'array' => Inline::getElements(1),

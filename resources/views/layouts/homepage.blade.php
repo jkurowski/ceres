@@ -53,18 +53,19 @@
             if (slick.$dots) {
                 slick.$dots.appendTo(firstDotsContainer);
             }
+            $(slick.$slides[0]).addClass('slick-active-animation');
         });
 
         heroSlider.slick({
             dots: true,
             infinite: true,
-            speed: 300,
+            speed: 600,
             slidesToShow: 1,
             adaptiveHeight: true,
             centerMode: true,
             centerPadding: '100px',
             autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: 9000,
             arrows: true,
             prevArrow: '<button type="button" class="slick-prev"><img src="svg/slider-arrow-left.svg" alt="Previous"></button>',
             nextArrow: '<button type="button" class="slick-next"><img src="svg/slider-arrow-right.svg" alt="Next"></button>',
@@ -89,6 +90,12 @@
             if (slick.$dots) {
                 slick.$dots.appendTo(nextDotsContainer);
             }
+
+            $(slick.$slides[currentSlide]).removeClass('slick-active-animation');
+        });
+
+        heroSlider.on('afterChange', function(event, slick, currentSlide) {
+            $(slick.$slides[currentSlide]).addClass('slick-active-animation');
         });
     });
 </script>
