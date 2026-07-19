@@ -67,8 +67,8 @@
             autoplay: true,
             autoplaySpeed: 9000,
             arrows: true,
-            prevArrow: '<button type="button" class="slick-prev"><img src="svg/slider-arrow-left.svg" alt="Previous"></button>',
-            nextArrow: '<button type="button" class="slick-next"><img src="svg/slider-arrow-right.svg" alt="Next"></button>',
+            prevArrow: '<button type="button" class="slick-prev"><img src="{{ asset('img/svg/slider-arrow-left.svg') }}" alt="Previous"></button>',
+            nextArrow: '<button type="button" class="slick-next"><img src="{{ asset('img/svg/slider-arrow-right.svg') }}" alt="Next"></button>',
             responsive: [
                 {
                     breakpoint: 991.98,
