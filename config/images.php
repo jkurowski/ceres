@@ -181,8 +181,8 @@ return [
     */
 
     'page' => [
-        'header_width' => 2560,
-        'header_height' => 470,
+        'header_width' => 1680,
+        'header_height' => 520,
         'file_path' => 'uploads/pages/headers/',
         'preview_file_path' => 'uploads/pages/headers/'
     ],

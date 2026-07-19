@@ -21,11 +21,15 @@ class MenuController extends Controller
         $page = Page::where('uri', $uri)->firstOrFail();
         $inline = Inline::whereSlug($uri)->get()->toArray();
 
-        if (!view()->exists('front.menupage.'.$uri)) {
+        $view = view()->exists('front.menupage.'.$uri)
+            ? 'front.menupage.'.$uri
+            : 'front.menupage.show';
+
+        if (!view()->exists($view)) {
             abort(404);
         }
 
-        return view('front.menupage.'.$uri)
+        return view($view)
             ->with([
                 'page' => $page,
                 'uri' => $uri,

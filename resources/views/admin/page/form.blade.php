@@ -42,6 +42,20 @@
                         @include('form-elements.html-input-text', ['label' => 'Nagłówek H1', 'name' => 'content_header', 'value' => $entry->content_header])
                     </div>
                     <div class="row w-100 form-group">
+                        @include('form-elements.html-input-file', [
+                            'label' => 'Zdjęcie nagłówka',
+                            'sublabel' =>
+                                '(wymiary: ' .
+                                config('images.page.header_width') .
+                                'px / ' .
+                                config('images.page.header_height') .
+                                'px)',
+                            'name' => 'file_header',
+                            'file' => $entry->file_header,
+                            'file_preview' => 'uploads/headers/',
+                        ])
+                    </div>
+                    <div class="row w-100 form-group">
                         @include('form-elements.html-input-text', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title])
                     </div>
                     <div class="row w-100 form-group">

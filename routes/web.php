@@ -158,9 +158,9 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/loadinline/{inline}', 'InlineController@show')->name('show');
             Route::post('/update/{inline}', 'InlineController@update')->name('update');
         });
-
-        Route::get('{uri}', 'MenuController@index')
-            ->where('uri', '^(?!kontakt|schowek|o-firmie|kredyty|aktualnosci|gallery|oferta-mieszkan|wyniki-wyszukiwania|inwestycje-planowane|inwestycje-zrealizowane|i/|historia/|przynalezne/|inline/|unsubscribe/)[A-Za-z0-9\-\/]+')
-            ->name('menu.show');
     });
+
+    Route::get('{uri}', 'Front\MenuController@index')
+        ->where('uri', '^(?!kontakt|schowek|o-firmie|kredyty|aktualnosci|gallery|oferta-mieszkan|wyniki-wyszukiwania|inwestycje-planowane|inwestycje-zrealizowane|i/|historia/|przynalezne/|inline/|unsubscribe/)[A-Za-z0-9\-\/]+')
+        ->name('menu.show');
 });

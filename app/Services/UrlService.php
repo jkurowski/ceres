@@ -24,8 +24,8 @@ class UrlService
         $filepath = public_path('uploads/headers/' . $name);
         Image::make($filepath)
             ->fit(
-                config('images.investment.header_width'),
-                config('images.investment.header_height')
+                config('images.page.header_width'),
+                config('images.page.header_height')
             )
             ->save($filepath);
 

@@ -25,7 +25,7 @@
                         @endif
                     </div>
 
-                    <img src="{{ $header ?: ($header_file ? asset('img/'.$header_file) : '') }}" alt="" width="1920" height="600" class="radius-8">
+                    <img src="{{ $header ?: ($header_file ? asset('img/'.$header_file) : asset('img/pageheader.jpg')) }}" alt="" width="1920" height="600" class="radius-8">
                 </div>
             </div>
         </div>

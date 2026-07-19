@@ -19,13 +19,16 @@ class PageService
         }
 
         $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
-        $file->storeAs('headers', $name, 'public_uploads');
+
+        File::ensureDirectoryExists(public_path('uploads/headers'));
+
+        $file->move(public_path('uploads/headers'), $name);
 
         $filepath = public_path('uploads/headers/' . $name);
         Image::make($filepath)
             ->fit(
-                config('images.investment.header_width'),
-                config('images.investment.header_height')
+                config('images.page.header_width'),
+                config('images.page.header_height')
             )
             ->save($filepath);
 

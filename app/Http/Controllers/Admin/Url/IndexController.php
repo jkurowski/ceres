@@ -9,12 +9,14 @@ use App\Http\Requests\UrlFormRequest;
 use App\Models\Url;
 use App\Models\Page;
 use App\Repositories\UrlRepository;
+use App\Services\UrlService;
 
 class IndexController extends Controller
 {
     private $repository;
+    private UrlService $service;
 
-    public function __construct(UrlRepository $repository)
+    public function __construct(UrlRepository $repository, UrlService $service)
     {
 //        $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index','store']]);
 //        $this->middleware('permission:page-create', ['only' => ['create','store']]);
@@ -22,6 +24,7 @@ class IndexController extends Controller
 //        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
 
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     public function create()
@@ -35,7 +38,12 @@ class IndexController extends Controller
 
     public function store(UrlFormRequest $request)
     {
-        $this->repository->create($request->validated());
+        $url = $this->repository->create($request->validated());
+
+        if ($request->hasFile('file_header')) {
+            $this->service->uploadHeader($request->title, $request->file('file_header'), $url);
+        }
+
         return redirect(route('admin.page.index'))->with('success', 'Link dodany');
     }
 
@@ -53,6 +61,10 @@ class IndexController extends Controller
     {
         $page = $this->repository->find($id);
         $this->repository->update($request->validated(), $page);
+
+        if ($request->hasFile('file_header')) {
+            $this->service->uploadHeader($request->title, $request->file('file_header'), $page, true);
+        }
 
         return redirect(route('admin.page.index'))->with('success', 'Link zaktualizowany');
     }
