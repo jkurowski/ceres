@@ -39,7 +39,7 @@
                     <h6>INFORMACJE</h6>
                     <ul class="mb-0 list-unstyled">
                         <li><a href="{{ route('kredyty') }}">Kredyty</a></li>
-                        <li><a href="">Polityka prywatności</a></li>
+                        <li><a href="{{ route('menu.show', ['uri' => 'polityka-prywatnosci']) }}">Polityka prywatności</a></li>
                         <li class="d-none"><a href="">Inwestycje zrealizowane</a></li>
                     </ul>
                 </div>
