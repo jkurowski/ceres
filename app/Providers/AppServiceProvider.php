@@ -186,7 +186,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('available_locales', config('app.available_locales'));
         View::share('rules', RodoRules::orderBy('sort')->whereActive(1)->get());
         View::share('cities', City::where('active', 1)->orderBy('sort')->get());
-        View::share('current_investment', Investment::where('status', 1)->with('city')->get([
+        View::share('current_investment', Investment::where('status', 1)->orderBy('sort')->with('city')->get([
             'id', 'slug', 'name', 'file_thumb', 'file_logo', 'date_end', 'city_id', 'gradient_thumb', 'entry_content', 'inv_city', 'inv_street', 'inv_property_number', 'date_start'
         ]));
 
