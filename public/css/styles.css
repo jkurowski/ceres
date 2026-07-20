@@ -149,6 +149,10 @@ p {
   font-size: 22px;
   font-weight: 400;
   color: #E3CE9B;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
 }
 #hero li .hero-apla h2 {
   font-weight: 800;
@@ -157,6 +161,9 @@ p {
   color: white;
   position: relative;
   padding-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
 }
 #hero li .hero-apla h2:before {
   content: "";
@@ -174,6 +181,9 @@ p {
   margin-top: 40px;
   padding: 17px 30px;
   display: inline-flex;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
 }
 #hero li .hero-apla .hero-apla-content .hero-dots {
   margin-top: 40px;
@@ -207,6 +217,12 @@ p {
 }
 #hero li .hero-apla .hero-apla-content .hero-dots .slick-dots li.slick-active button {
   background: #E3CE9B;
+}
+#hero li.slick-active-animation .hero-apla span,
+#hero li.slick-active-animation .hero-apla h2,
+#hero li.slick-active-animation .hero-apla .hero-apla-content .bttn {
+  opacity: 1;
+  transform: translateY(0);
 }
 .features-list li {
   margin-bottom: 50px;

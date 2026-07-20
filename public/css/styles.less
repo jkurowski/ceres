@@ -156,6 +156,10 @@ p {
                 font-size: 22px;
                 font-weight: 400;
                 color: #E3CE9B;
+                display: inline-block;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
             }
             h2 {
                 font-weight: 800;
@@ -164,6 +168,9 @@ p {
                 color: white;
                 position: relative;
                 padding-bottom: 20px;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
                 &:before {
                     content: "";
                     width: 60px;
@@ -182,6 +189,9 @@ p {
                     margin-top: 40px;
                     padding: 17px 30px;
                     display: inline-flex;
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
                 }
                 .hero-dots {
                     margin-top: 40px;
@@ -216,6 +226,12 @@ p {
                         }
                     }
                 }
+            }
+        }
+        &.slick-active-animation .hero-apla {
+            span, h2, .hero-apla-content .bttn {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     }
