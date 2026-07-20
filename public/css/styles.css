@@ -1483,6 +1483,7 @@ footer .social-media a:hover {
   background: white;
   border-radius: 8px;
   margin: 0 12px 24px;
+  text-align: center;
 }
 .grid-layout .row {
   flex-wrap: wrap;
@@ -1506,11 +1507,13 @@ footer .social-media a:hover {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+.grid-layout .property-list-item-col-1,
 .grid-layout .property-list-item-col-3 {
   justify-content: center;
 }
 .grid-layout .half-2 {
   order: 1;
+  margin-bottom: 15px;
 }
 .grid-layout .half-1 {
   order: 2;
@@ -1531,6 +1534,24 @@ footer .social-media a:hover {
 }
 .grid-layout .btn {
   margin-top: 10px;
+}
+@media (max-width: 1699.98px) {
+  .grid-layout .invest-card-list {
+    width: calc(33.3333% - 24px) !important;
+    max-width: calc(33.3333% - 24px) !important;
+  }
+}
+@media (max-width: 1399.98px) {
+  .grid-layout .invest-card-list {
+    width: calc(50% - 24px) !important;
+    max-width: calc(50% - 24px) !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .grid-layout .invest-card-list {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 @media (max-width: 1453.98px) {
   .list-layout .property-list-item-info {
