@@ -1,6 +1,13 @@
 @extends('admin.layout')
 @section('content')
 @if(Route::is('admin.developro.investment.building.floors.edit'))
+    @php
+        $floorProperties = $entry->properties;
+        $minPriceBrutto = $floorProperties->min('price_brutto');
+        $maxPriceBrutto = $floorProperties->max('price_brutto');
+        $minAreaSearch = $floorProperties->min('area_search');
+        $maxAreaSearch = $floorProperties->max('area_search');
+    @endphp
     <form method="POST" action="{{route('admin.developro.investment.building.floors.update', [$investment, $building, $entry])}}" enctype="multipart/form-data" class="mappa">
         {{method_field('PUT')}}
 @else
@@ -67,8 +74,8 @@
                             @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
                             @include('form-elements.input-text', ['label' => 'Numer piętra', 'name' => 'number', 'value' => $entry->number, 'required' => 1])
                             @include('form-elements.input-text', ['label' => 'Kolejność', 'name' => 'position', 'value' => $entry->position, 'required' => 1])
-                            @include('form-elements.input-text', ['label' => 'Zakres pow. w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'area_range', 'value' => $entry->area_range])
-                            @include('form-elements.input-text', ['label' => 'Zakres cen w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'price_range', 'value' => $entry->price_range])
+                            @include('form-elements.input-text', ['label' => 'Zakres pow. w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)' . (isset($minAreaSearch) ? ' | min: ' . $minAreaSearch . ' max: ' . $maxAreaSearch : ''), 'name' => 'area_range', 'value' => $entry->area_range])
+                            @include('form-elements.input-text', ['label' => 'Zakres cen w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)' . (isset($minPriceBrutto) ? ' | min: ' . $minPriceBrutto . ' max: ' . $maxPriceBrutto : ''), 'name' => 'price_range', 'value' => $entry->price_range])
                             @include('form-elements.html-input-file', ['label' => 'Plan piętra', 'sublabel' => '(wymiary: '.config('images.floor_plan.width').'px / '.config('images.floor_plan.height').'px)', 'name' => 'file'])
 
                         </div>

@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 my: 'bottom center',
                 at: 'bottom center',
                 target: 'mouse',
-                adjust: {x:0, y: -10, mouse: false} ,
+                adjust: {x:0, y: -10} ,
             },
             style: {
                 classes: clas,
@@ -449,10 +449,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     offset: 0
                 }
             },
-            show: {effect: false, delay: 0, solo: true},
-            hide: {effect: false},
         });
     });
+
 
 // Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
