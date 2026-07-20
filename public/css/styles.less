@@ -736,6 +736,63 @@ header {
     }
 }
 
+.qtip {position:absolute;left:-28000px;top:-28000px;display:none;width:190px;box-shadow:none;}
+.qtip-content {position:relative;overflow:hidden;text-align:left;word-wrap:break-word;color:white !important;font-size:12px !important;line-height:16px;padding:10px 10px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px}
+.qtip-default .qtip-content {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #75543f;
+    background-color: #75543f;
+}
+.qtip-tip{margin: 0 auto;overflow: hidden;z-index: 10;visibility: hidden}
+.qtip-tip, .qtip-tip canvas{position: absolute;color:#222 !important;border: 0 dashed transparent !important}
+.qtip-tip canvas{ top: 0; left: 0; }
+.qtip-content h3 {color:white;font-weight:600;margin:0;font-size:15px}
+.qtip-content li {border-bottom:1px solid #3f3f3f;padding:3px 0;font-weight:300}
+.qtip-content li b {font-weight:600}
+
+/* Kolory dymkow
+            case '1':
+                return 'DostÄpne';
+            case '2':
+                return 'Rezerwacja';
+            case '3':
+                return 'Sprzedane';
+            case '4':
+                return 'WynajÄte';
+*/
+.qtip.status-1 .qtip-content {background:#3a9019;border:1px solid #3a9019}
+.qtip-tip.status-1 canvas {background:#3a9019 !important}
+
+.qtip.status-3 .qtip-content {background:#ec2327;border:1px solid #ec2327}
+.qtip-tip.status-3 canvas {background:#ec2327 !important;color:black}
+
+.qtip.status-2 .qtip-content {background:#FBC000;border:1px solid #FBC000}
+.qtip-tip.status-2 canvas {background:#FBC000 !important}
+
+.qtip.status-4 .qtip-content {background:#de8300;border:1px solid #de8300}
+.qtip-tip.status-4 canvas {background:#de8300 !important}
+
+.qtip.status-5 .qtip-content {background:#777;border:1px solid #777}
+.qtip-tip.status-5 canvas {background:#777 !important}
+
+
+.qtip-content h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 9px;
+    margin-bottom: 9px;
+}
+.qtip-content hr {
+    margin: 10px 0 7px;
+    border-top: 1px solid rgba(255,255,255,.2);
+}
+.qtip-content .floor-stats {font-size:12px;line-height: normal}
+.qtip-content .floor-stats span {float: right}
+
+.formError{position:absolute;top:300px;left:300px;display:block;z-index:500;cursor:pointer;margin:0 !important;}.formError .formErrorContent{background:#ff9000;position:relative;z-index:5001;color:#fff;width:190px;font-size:10px;border:1px solid #ff9000;line-height:normal;padding:2px 10px 2px 10px}.formError .formErrorArrow{width:12px;margin:-2px 0 0 1px;position:relative;z-index:5006}.formError .formErrorArrowBottom{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;margin:0 0 0 12px;top:2px}.formError .formErrorArrow div{font-size:0;height:1px;background:#ff9000;margin:0 auto;line-height:0;display:block}.formError .formErrorArrowBottom div{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none}.formError .formErrorArrow .line10{width:15px;border:0}.formError .formErrorArrow .line9{width:13px;border:0}.formError .formErrorArrow .line8{width:11px}.formError .formErrorArrow .line7{width:9px}.formError .formErrorArrow .line6{width:7px}.formError .formErrorArrow .line5{width:5px}.formError .formErrorArrow .line4{width:3px}.formError .formErrorArrow .line3{width:1px}.formError .formErrorArrow .line2{width:0}.formError .formErrorArrow .line1{width:0}.inputbox-error{border-bottom:1px solid #ff9000!important}
 
 
 .bttn {

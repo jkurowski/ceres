@@ -194,6 +194,7 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('/js/plan/tip.min.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/plan.js') }}" charset="utf-8"></script>
     <script>
         document.querySelector('.sort-select').addEventListener('change', function() {
@@ -208,7 +209,7 @@
         });
 
         const buttons = document.querySelectorAll('.list-fav');
-        const baseUrl = "https://www.kalternieruchomosci.pl/";
+        const baseUrl = "https://www.ceresdevelopment.pl/";
 
         buttons.forEach(button => {
             button.addEventListener('click', function() {

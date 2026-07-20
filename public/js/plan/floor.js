@@ -9,22 +9,6 @@ function onWindowResize() {
 
 $(document).ready(function() {
 
-// Tooltip
-    $('area[title]').each(function () {
-        const elem = $(this), clas = $(this).attr('class');
-        elem.qtip({
-            content: $(this).attr('title'),
-            position: {
-                my: 'bottom center',
-                at: 'bottom center',
-                target: 'mouse',
-                adjust: {x:0, y: -10} ,
-            },
-            style: {classes: clas,tip: {corner: true,mimic: false,width: 12, height: 8,border: true,offset: 0}},
-            hide: {fixed: false, effect: false, show: false},
-        });
-    });
-
     const sold = 'ec2327'; // mieszkanie sprzedane
     const reservation = 'FBC000'; // mieszkanie zarezerwowane
     const forsale = '3a9019'; // mieszkanie na sprzedaz

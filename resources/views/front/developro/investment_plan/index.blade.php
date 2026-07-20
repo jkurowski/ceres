@@ -69,7 +69,8 @@
                                                             shape="poly"
                                                             href="{{route('developro.building', [$investment->slug, $building, 'buildingSlug' => Str::slug($building->name)])}}?status=1#submenu"
                                                             alt="{{$building->slug}}"
-                                                            data-item="{{$building->id}}" title="{{$building->name}}"
+                                                            data-item="{{$building->id}}"
+                                                            title="{{$building->name}}"
                                                             data-roomnumber="{{$building->number}}"
                                                             data-roomtype="{{$building->typ}}"
                                                             data-roomstatus="{{$building->status}}"
@@ -225,6 +226,7 @@
 @push('scripts')
     <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
     <script src="{{ asset('/js/plan/plan.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('/js/plan/tip.min.js') }}" charset="utf-8"></script>
     <script>
         document.querySelector('.sort-select').addEventListener('change', function() {
             const url = new URL(window.location.href);

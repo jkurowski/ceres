@@ -426,7 +426,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Ruchoma galeria
+    // Tooltip
+    $('area[title]').each(function () {
+        const $this = $(this);
+        const clas = $this.attr('class');
+        $this.qtip({
+            content: $this.attr('title'),
+            position: {
+                my: 'bottom center',
+                at: 'bottom center',
+                target: 'mouse',
+                adjust: {x:0, y: -10, mouse: false} ,
+            },
+            style: {
+                classes: clas,
+                tip: {
+                    corner: true,
+                    mimic: false,
+                    width: 12,
+                    height: 8,
+                    border: true,
+                    offset: 0
+                }
+            },
+            show: {effect: false, delay: 0, solo: true},
+            hide: {effect: false},
+        });
+    });
+
+// Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
 
     // Slider
