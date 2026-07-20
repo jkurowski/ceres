@@ -7,6 +7,7 @@
         $maxPriceBrutto = $floorProperties->max('price_brutto');
         $minAreaSearch = $floorProperties->min('area_search');
         $maxAreaSearch = $floorProperties->max('area_search');
+        $uniqueRooms = $floorProperties->where('type', 1)->pluck('rooms')->filter()->unique()->sort()->values();
     @endphp
     <form method="POST" action="{{route('admin.developro.investment.building.floors.update', [$investment, $building, $entry])}}" enctype="multipart/form-data" class="mappa">
         {{method_field('PUT')}}
@@ -76,6 +77,7 @@
                             @include('form-elements.input-text', ['label' => 'Kolejność', 'name' => 'position', 'value' => $entry->position, 'required' => 1])
                             @include('form-elements.input-text', ['label' => 'Zakres pow. w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)' . (isset($minAreaSearch) ? ' | min: ' . $minAreaSearch . ' max: ' . $maxAreaSearch : ''), 'name' => 'area_range', 'value' => $entry->area_range])
                             @include('form-elements.input-text', ['label' => 'Zakres cen w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)' . (isset($minPriceBrutto) ? ' | min: ' . $minPriceBrutto . ' max: ' . $maxPriceBrutto : ''), 'name' => 'price_range', 'value' => $entry->price_range])
+                            @include('form-elements.html-input-text', ['label' => 'Zakres pokoi w wyszukiwarce', 'sublabel' => '(liczby oddzielone przecinkiem)' . (isset($uniqueRooms) && $uniqueRooms->isNotEmpty() ? ' | dostępne: ' . $uniqueRooms->implode(',') : ''), 'name' => 'room_range', 'value' => $entry->room_range])
                             @include('form-elements.html-input-file', ['label' => 'Plan piętra', 'sublabel' => '(wymiary: '.config('images.floor_plan.width').'px / '.config('images.floor_plan.height').'px)', 'name' => 'file'])
 
                         </div>

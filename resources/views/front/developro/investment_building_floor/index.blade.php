@@ -31,7 +31,13 @@
 
 @section('content')
     <main>
-        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '. $building->number .' - '.$floor->name, 'pageDesc' => $investment->name, 'class' => 'sm'])
+        @include('layouts.partials.page-header', [
+            'page' => $page,
+            'header' => asset('img/pageheader.jpg'),
+            'h1' => $investment->name .' - '. $building->number .' - '.$floor->name,
+            'pageDesc' => $investment->name,
+            'class' => 'sm'
+        ])
         @if(1 == 2)
         <div class="container">
             <div class="row">
@@ -112,7 +118,12 @@
             </div>
         </section>
 
-        @include('front.investments.single-investment-search', ['investment' => $investment->floor, 'full' => 1, 'status' => $investment->status, 'price' => $floor])
+        @include('front.investments.single-investment-search', [
+            'investment' => $investment->floor,
+            'full' => 1,
+            'status' => $investment->status,
+            'price' => $floor
+        ])
 
         <section id="properties" class="pt-0">
             <div class="container">
