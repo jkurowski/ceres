@@ -204,7 +204,7 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-12">
-                        <div id="layout-container" class="list-layout">
+                        <div id="layout-container" class="grid-layout">
                             @foreach($properties as $index => $p)
                                 <x-property-new-list-item :p="$p" :index="$index" :sort="$sort"/>
                             @endforeach

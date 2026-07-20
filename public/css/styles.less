@@ -1430,9 +1430,46 @@ footer {
 }
 
 /* Grid view */
-.grid-layout .col-2, .grid-layout .col-4 {
+#layout-container.grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid-layout .invest-card-list {
+    padding: 20px;
+    width: calc(25% - 24px) !important;
+    max-width: calc(25% - 24px) !important;
+    background: white;
+    border-radius: 8px;
+    margin: 0 12px 24px;
+}
+.grid-layout .row {
+    flex-wrap: wrap;
+}
+.grid-layout .col-6, .grid-layout .col-2, .grid-layout .col-4 {
     flex: 0 0 auto;
     width: 100%;
+}
+.grid-layout .w-100 .col-4 {
+    flex: 0 0 auto;
+    width: 33.33333%;
+    justify-content: center;
+}
+.grid-layout .property-list-item-col-2 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dfdcd6;
+    border-top: 1px solid #dfdcd6;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.grid-layout .property-list-item-col-3 {
+    justify-content: center;
+}
+.grid-layout .half-2 {
+    order: 1;
+}
+.grid-layout .half-1 {
+    order: 2;
 }
 .grid-layout .invest-card-list {
     padding: 20px;
@@ -1446,7 +1483,7 @@ footer {
     padding: 0 12px !important;
 }
 .grid-layout .property-list-item-name {
-    margin-bottom: 10px;
+
 }
 .grid-layout .property-list-item-status {
     margin: 10px 0;
