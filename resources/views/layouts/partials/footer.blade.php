@@ -30,7 +30,7 @@
                     <h6>INWESTYCJE</h6>
                     <ul class="mb-0 list-unstyled">
                         <li><a href="https://www.sosnowy-jablonna.pl/" target="_blank">Sosnowy Zakątek</a></li>
-                        <li><a href="/i/sprawna">Sprawna</a></li>
+                        <li><a href="/i/sprawna/plan-inwestycji/">Sprawna</a></li>
                     </ul>
                 </div>
             </div>

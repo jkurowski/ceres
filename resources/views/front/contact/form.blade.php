@@ -134,7 +134,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="validate[required] form-control @error('phone') is-invalid @enderror" id="floatingPhone" placeholder="Telefon" name="phone" value="{{ old('phone') }}">
+                                    <input type="text" class="form-control @error('phone') is-invalid @enderror" id="floatingPhone" placeholder="Telefon" name="phone" value="{{ old('phone') }}">
                                     <label for="floatingPhone" class="h-100">Telefon</label>
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

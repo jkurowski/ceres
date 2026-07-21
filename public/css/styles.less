@@ -3,6 +3,7 @@ html, body {
     color: black;
     font-weight: 400;
     background: #faf7f5;
+    scroll-behavior: smooth;
 }
 *,
 *::before,
@@ -159,7 +160,7 @@ p {
                 display: inline-block;
                 opacity: 0;
                 transform: translateY(30px);
-                transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+                transition: opacity 0.4s ease, transform 0.4s ease;
             }
             h2 {
                 font-weight: 800;
@@ -170,7 +171,7 @@ p {
                 padding-bottom: 20px;
                 opacity: 0;
                 transform: translateY(30px);
-                transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+                transition: opacity 0.4s ease, transform 0.4s ease;
                 &:before {
                     content: "";
                     width: 60px;
@@ -191,7 +192,7 @@ p {
                     display: inline-flex;
                     opacity: 0;
                     transform: translateY(30px);
-                    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
+                    transition: opacity 0.4s ease, transform 0.4s ease;
                 }
                 .hero-dots {
                     margin-top: 40px;
@@ -229,9 +230,20 @@ p {
             }
         }
         &.slick-active-animation .hero-apla {
-            span, h2, .hero-apla-content .bttn {
+            span {
                 opacity: 1;
                 transform: translateY(0);
+                transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+            }
+            h2 {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+            }
+            .hero-apla-content .bttn {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
             }
         }
     }

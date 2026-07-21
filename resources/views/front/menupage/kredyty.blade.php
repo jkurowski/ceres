@@ -54,14 +54,6 @@
                 <div class="row m-0">
                     <div class="col-12">
                         <div class="row contact-data-row justify-content-center">
-                            <div class="col-12 col-md-6 col-xl-4 p-0 pb-3 pb-md-5 pb-xl-0">
-                                <div class="contact-data text-center">
-                                <span class="contact-data-icon">
-                                    <img src="{{ asset('img/icons/mapmarker.png') }}" alt="" width="120" height="120">
-                                </span>
-                                    <p>ul. Kartuska 278, 80-125 Gdańsk</p>
-                                </div>
-                            </div>
                             <div class="col-12 col-md-6 col-xl-4 p-0 pb-3 pb-md-0">
                                 <div class="contact-data text-center">
                                 <span class="contact-data-icon">

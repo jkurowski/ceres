@@ -97,7 +97,7 @@
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor dolor risus, at malesuada quam lacinia sit amet. Maecenas ullamcorper nunc at ante tincidunt, vel pretium ligula suscipit. Fusce semper ultricies lobortis. Maecenas nec est nec orci facilisis suscipit. Aliquam erat volutpat. Vestibulum feugiat laoreet metus molestie porttitor. Morbi gravida risus eu sapien congue pharetra. Ut ut leo libero. Etiam at ante porttitor, blandit ante et, bibendum ante. Cras ipsum diam, bibendum at diam ac, pharetra egestas risus. Donec feugiat tincidunt orci, in varius massa sagittis congue. Suspendisse potenti. Integer tempus tortor quis eros accumsan, a imperdiet est luctus. Mauris et arcu et velit pellentesque fringilla.</div>
+                                    <div class="accordion-body">Spotkanie można umówić w dogodnym terminie, kontaktując się z naszym biurem sprzedaży telefonicznie lub za pośrednictwem formularza kontaktowego bądź wiadomości e-mail.</div>
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -107,7 +107,7 @@
                                     </button>
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Pellentesque molestie dolor ac magna aliquet auctor sed vel magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec auctor magna nunc, ut cursus nulla dictum nec. Cras aliquet efficitur mi, ut accumsan nibh vulputate at. Aliquam vulputate fermentum dictum. Mauris enim nibh, suscipit non porttitor non, mollis non purus. Proin varius a neque eu eleifend.</div>
+                                    <div class="accordion-body">Tak. Istnieje możliwość obejrzenia mieszkania po wcześniejszym umówieniu terminu z naszym biurem sprzedaży. Chętnie odpowiemy na wszystkie Państwa pytania.</div>
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -117,7 +117,7 @@
                                     </button>
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam vel sollicitudin metus. Sed vitae mollis magna. Nam sem lectus, condimentum ut dui vel, aliquet rhoncus libero. Quisque quis lorem eu felis porta placerat. Donec auctor urna at quam euismod consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus a nunc ac ligula molestie elementum vitae nec erat. Curabitur tristique tortor id rhoncus bibendum. Nullam lobortis eleifend scelerisque. Aenean ac velit lobortis, mollis augue nec, egestas sapien. Nam vitae magna vestibulum, viverra tellus non, bibendum lorem. Aliquam suscipit nulla nec ex euismod, ac gravida tortor ornare.</div>
+                                    <div class="accordion-body">Rezerwacja mieszkania odbywa się na podstawie umowy rezerwacyjnej zawieranej na okres 2 miesięcy. Wymaga ona wniesienia opłaty rezerwacyjnej w wysokości 1% wartości nieruchomości, która jest zaliczana na poczet ceny zakupu.</div>
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -127,7 +127,7 @@
                                     </button>
                                 </h2>
                                 <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Sed quis iaculis mauris, at semper odio. Fusce eu finibus justo. Ut scelerisque lobortis vulputate. Morbi mollis eleifend ipsum sed tincidunt. Donec vel convallis ante. Duis porttitor vulputate lacinia. Sed at vulputate justo. Ut at varius lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec blandit et diam et eleifend. Pellentesque ligula turpis, vestibulum vitae iaculis vel, malesuada vel massa. Maecenas dignissim fringilla justo, vitae placerat nisl aliquet eget.</div>
+                                    <div class="accordion-body">Tak. Oferujemy wsparcie w procesie uzyskania finansowania. Więcej informacji znajdą Państwo w zakładce „Dla Klienta”, gdzie opisaliśmy dostępne formy pomocy oraz przebieg procesu kredytowego.</div>
                                 </div>
                             </div>
                         </div>
@@ -142,8 +142,8 @@
                                     <h3>Nie znalazłeś odpowiedzi?</h3>
                                     <p>Chętnie pomożemy i rozwiejemy wszystkie wątpliwości.</p>
                                     <div class="d-block d-sm-flex w-100 gap-0 gap-sm-4">
-                                        <button type="submit" class="bttn bttn-sm bttn-brown d-inline-flex bttn-arrow mt-5 bttn-w100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.34 1.76.66 2.59a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.49-1.23a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.59.66A2 2 0 0 1 22 16.92z"/></svg> Zadzwoń do nas</button>
-                                        <button type="submit" class="bttn bttn-sm bttn-brown-outline d-inline-flex bttn-arrow mt-5 bttn-w100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg> Napisz do nas</button>
+                                        <a href="tel:+48602293025" class="bttn bttn-sm bttn-brown d-inline-flex bttn-arrow mt-5 bttn-w100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.34 1.76.66 2.59a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.49-1.23a2 2 0 0 1 2.11-.45c.83.32 1.7.54 2.59.66A2 2 0 0 1 22 16.92z"/></svg> Zadzwoń do nas</a>
+                                        <a href="#contact-form" class="bttn bttn-sm bttn-brown-outline d-inline-flex bttn-arrow mt-5 bttn-w100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg> Napisz do nas</a>
                                     </div>
                                 </div>
                             </div>
