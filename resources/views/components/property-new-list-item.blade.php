@@ -8,6 +8,7 @@
                         <span class="mb-0 lh-1 d-block">{{ $p->investment->name }}</span>
                     </div>
                 </div>
+
                 <div class="@if($p->investment->status != 3) col-4 @else col-8 @endif d-flex align-items-center property-list-item-col-2">
                     <div class="row w-100">
                         <div class="col-12">
@@ -15,16 +16,22 @@
                                 <div class="col-4 d-flex align-items-center gap-2 property-list-item-info">
                                     <img src="{{ asset('img/svg/property-data-floor.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->floor->name }}
                                 </div>
-                                <div class="col-4 d-flex align-items-center gap-2 property-list-item-info p-0">
+                                @if($p->area)
+                                <div class
+                                     ="col-4 d-flex align-items-center gap-2 property-list-item-info p-0">
                                     <img src="{{ asset('img/svg/property-data-area.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->area }} m<sup>2</sup>
                                 </div>
+                                @endif
+                                @if($p->rooms)
                                 <div class="col-4 d-flex align-items-center gap-2 property-list-item-info p-0">
                                     <img src="{{ asset('img/svg/property-data-rooms.svg') }}" alt="" loading="lazy" decoding="async" class="w-10 h-10 object-fit-contain" width="13" height="13"> {{ $p->rooms }}
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
+
                 @if($p->investment->status != 3)
                 <div class="col-2 property-list-item-col-3 d-flex align-items-center">
 
