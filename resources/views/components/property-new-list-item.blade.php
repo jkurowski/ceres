@@ -67,6 +67,7 @@
                     </div>
                 </div>
                 @endif
+                @if ($p->type == 1)
                 <div class="col-2 d-flex align-items-center property-list-item-col-5 gap-2">
                     @if(Route::currentRouteName() === 'clipboard.index')
                         <button id="addToFav" class="btn btn-primary btn-with-icon text-nowrap pe-3 ps-3" data-id="{{$p->id}}">USUŃ</button>
@@ -109,6 +110,7 @@
                         </a>
 
                 </div>
+                @endif
             </div>
         </div>
         <div class="col-6 half-2">
