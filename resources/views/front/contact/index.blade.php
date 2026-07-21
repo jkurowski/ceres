@@ -32,8 +32,8 @@
                                 <span class="contact-data-icon">
                                     <img src="{{ asset('img/icons/phone.png') }}" alt="" width="120" height="120">
                                 </span>
-                                    <p><a href="">+48 602 293 025</a></p>
-                                    <p><a href="">+48 600 897 075</a></p>
+                                    <p><a href="tel:+48602293025">+48 602 293 025</a></p>
+                                    <p><a href="tel:+48600897075">+48 600 897 075</a></p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-xl-3 pb-3 p-md-0">
