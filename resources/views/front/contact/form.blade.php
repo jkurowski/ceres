@@ -195,7 +195,7 @@
                             </div>
 
                             <div class="col-12">
-                                <input name="form_page" type="hidden" value="{{ $page_name }}">
+                                <input name="page" type="hidden" value="{{ $page_name }}">
                                 <script type="text/javascript">
                                     @if(settings()->get("recaptcha_site_key") && settings()->get("recaptcha_secret_key"))
                                     document.write("<button type=\"submit\" class=\"bttn bttn-brown d-inline-flex bttn-arrow mt-4 g-recaptcha\" data-sitekey=\"{{ settings()->get("recaptcha_site_key") }}\" data-callback=\"onRecaptchaSuccess\" data-action=\"submitContact\">Wyślij wiadomość<img src=\"{{ asset('img/svg/right-arrow.svg') }}\" alt=\"\" width=\"33\" height=\"35\"></button>");
