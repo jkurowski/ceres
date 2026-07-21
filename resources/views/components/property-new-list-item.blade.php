@@ -36,13 +36,17 @@
                 <div class="col-2 property-list-item-col-3 d-flex align-items-center">
 
                     <div>
-                        @if($p->price_brutto && $p->status == 1 && !$p->highlighted && $p->area)
+                        @if($p->price_brutto && $p->status == 1 && !$p->highlighted)
                             <p class="h3 lh-1 mb-0">@money($p->price_brutto)</p>
+                            @if($p->area)
                             <span class="d-block small">@money(($p->price_brutto / $p->area)) / m<sup>2</sup></span>
+                            @endif
                         @endif
-                        @if($p->price_brutto && $p->status == 1 && $p->highlighted && $p->area)
+                        @if($p->price_brutto && $p->status == 1 && $p->highlighted)
                             <p class="h3 lh-1 mb-0 promo-price">@money($p->promotion_price)</p>
+                            @if($p->area)
                             <span class="d-block small promo-price">@money(($p->promotion_price / $p->area)) / m<sup>2</sup></span>
+                            @endif
                         @endif
                         @if($p->status <> 1)
                             <p class="h3 lh-1 mb-0 promo-price">&nbsp;</p>
