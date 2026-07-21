@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="copyrights">
-        Copyright © <?=date("Y");?> Ceres Development All Rights Reserved <span>|</span> Projekt i wykonanie: <a href="https://www.developro.pl/" target="_blank">DeveloPro.pl</a>
+        Copyright © <?=date("Y");?> Ceres Development All Rights Reserved <span>|</span> Projekt i wykonanie: <a href="https://www.developro.pl/" target="_blank">DeveloPro.pl</a> <span>|</span> Ta strona jest chroniona przez reCAPTCHA.
     </div>
 </footer>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
