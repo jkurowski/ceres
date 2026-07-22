@@ -44,7 +44,6 @@
                                         <p><b>Godziny otwarcia:</b></p>
                                         <p>poniedziałek-piątek 8:30-18:00</p>
                                         <p>sobota - po wcześniejszej rezerwacji</p>
-                                        <p>Niedziela - nieczynne</p>
                                     </div>
                                 </li>
                                 <li class="tab-content-phone align-items-center">
