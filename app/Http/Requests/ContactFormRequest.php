@@ -28,7 +28,7 @@ class ContactFormRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email:rfc',
             'message' => 'required',
-            'phone' => 'required',
+            'phone' => '',
             'g-recaptcha-response' => ['required', new ReCaptchaV3()]
         ];
     }
