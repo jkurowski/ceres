@@ -56,6 +56,7 @@ class InvestmentFormRequest extends FormRequest
             'users' => '',
             'supervisors' => '',
             'file_brochure' => '',
+            'map_cords' => '',
 
             'inv_province' => ['required', 'string', 'max:100'],
             'inv_county' => ['nullable', 'string', 'max:100'],

@@ -500,9 +500,9 @@
         @endif
 
 
-        <!- Contact form -->
+        <!-- Contact form -->
         @include('front.contact.form', ['page_name' => $property->name])
-        <!- End of Contact form -->
+        <!-- End of Contact form -->
 
 
             <!-- Podobne mieszkania -->

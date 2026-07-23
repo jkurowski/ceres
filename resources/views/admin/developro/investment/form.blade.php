@@ -92,6 +92,13 @@
                         ])
                     </div>
                     <div class="col-4">
+                        @include('form-elements.html-input-text', [
+                            'label' => 'Współrzędne inwestycji',
+                            'name' => 'map_cords',
+                            'value' => $entry->map_cords,
+                        ])
+                    </div>
+                    <div class="col-4">
                         @include('form-elements.html-select', [
                             'label' => 'Lokale usługowe',
                             'name' => 'commercial',

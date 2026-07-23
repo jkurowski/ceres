@@ -1,7 +1,7 @@
 @extends('layouts.homepage', ['body_class' => 'homepage'])
 
 @section('content')
-    <!- Hero -->
+    <!-- Hero -->
     <div id="hero">
         <ul class="list-unstyled mb-0">
             @foreach($slider as $s)
@@ -29,11 +29,11 @@
             @endforeach
         </ul>
     </div>
-    <!- End of Hero -->
+    <!-- End of Hero -->
 
     <main>
         @if(1 == 2)
-        <!- Search form -->
+        <!-- Search form -->
         <section class="offer-search pb-0">
             <div class="container">
                 <form action="/mieszkania" method="get">
@@ -131,10 +131,10 @@
                 </form>
             </div>
         </section>
-        <!- End of Search form -->
+        <!-- End of Search form -->
         @endif
 
-        <!- Investment list -->
+        <!-- Investment list -->
         <section class="mt-150">
             <div class="container">
                 <div class="row section-header">
@@ -155,10 +155,9 @@
                 </div>
             </div>
         </section>
-        <!- End of Investment list -->
+        <!-- End of Investment list -->
 
-        @if(1 == 2)
-        <!- Map -->
+        <!-- Map -->
         <section>
             <div class="container">
                 <div class="row section-header">
@@ -172,10 +171,9 @@
             </div>
             <div id="map"></div>
         </section>
-        <!- End of Map -->
-        @endif
+        <!-- End of Map -->
 
-        <!- About -->
+        <!-- About -->
         <section class="pb-0 pb-sm-5 pb-xxl-0">
             <div class="container">
                 <div class="row section-header">
@@ -240,10 +238,111 @@
                 </div>
             </div>
         </section>
-        <!- End of About -->
+@push('style')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <style>
+        .leaflet-tooltip.marker-tooltip {
+            background-color: #fff;
+            border: 1px solid #c7a97b;
+            border-radius: 4px;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            padding: 5px 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            font-size: 22px;
+        }
+        .leaflet-popup-content {
+            margin: 0;
+            line-height: 1;
+            font-size: 26px;
+            min-height: 33px;
+        }
+        .leaflet-popup-close-button {
+            display: none !important;
+            span {
+                font-size: 14px;
+                margin-bottom: 2px;
+            }
+        }
+        .leaflet-popup-content-wrapper {
+            border-radius: 4px;
+        }
+        .leaflet-popup-tip-container {
+            display: none;
+        }
+        .leaflet-tooltip-top.marker-tooltip::before {
+            margin-left: -12px;
+            margin-bottom: -24px;
+            border: 12px solid transparent;
+            border-top-color: #7c5b43;
+        }
+        .leaflet-tooltip-bottom.marker-tooltip::before {
+            border-bottom-color: #c7a97b;
+        }
+        .leaflet-tooltip-left.marker-tooltip::before {
+            border-left-color: #c7a97b;
+        }
+        .leaflet-tooltip-right.marker-tooltip::before {
+            border-right-color: #c7a97b;
+        }
+        .leaflet-popup {
+            margin-bottom: 67px;
+        }
+    </style>
+@endpush
+@push('scripts')
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script>
+        const map = L.map('map').setView([52.2297, 21.0122], 10);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        const invisibleIcon = L.divIcon({
+            className: 'invisible-marker',
+            html: '',
+            iconSize: [0, 0],
+            iconAnchor: [0, 0]
+        });
+
+        const markers = [];
+
+        @foreach($current_investment as $p)
+            @if($p->map_cords)
+                @php
+                    $coords = explode(',', $p->map_cords);
+                    $url = ($p->id == 1) ? 'https://www.sosnowy-jablonna.pl' : route('developro.plan', $p->slug);
+                    $target = ($p->id == 1) ? '_blank' : '_self';
+                @endphp
+                @if(count($coords) == 2)
+                    const marker{{ $p->id }} = L.marker([{{ trim($coords[0]) }}, {{ trim($coords[1]) }}], {icon: invisibleIcon}).addTo(map)
+                        .bindTooltip('<b>{{ $p->name }}</b>', {permanent: true, direction: 'top', className: 'marker-tooltip', interactive: true, offset: [0, -10]})
+                        .bindPopup('<a href="{{ $url }}" target="{{ $target }}" class="bttn bttn-sm bttn-gold mt-3">Odwiedź inwestycję</a>');
+
+                    marker{{ $p->id }}.on('tooltipclick', function() {
+                        marker{{ $p->id }}.openPopup();
+                    });
+
+                    markers.push(marker{{ $p->id }});
+                @endif
+            @endif
+        @endforeach
+
+        if (markers.length > 0) {
+            const group = new L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.1));
+        }
+    </script>
+@endpush
 
         @if(1 == 2)
-        <!- Promotion -->
+        <!-- Promotion -->
         <section>
             <div class="container">
                 <div class="row section-header">
@@ -288,12 +387,12 @@
                 </div>
             </div>
         </section>
-        <!- End of Promotion -->
+        <!-- End of Promotion -->
         @endif
 
-        <!- Contact form -->
+        <!-- Contact form -->
         @include('front.contact.form', ['page_name' => 'Strona główna'])
-        <!- End of Contact form -->
+        <!-- End of Contact form -->
 
     </main>
 @endsection

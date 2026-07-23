@@ -208,9 +208,9 @@
             </div>
         </section>
 
-        <!- Contact form -->
+        <!-- Contact form -->
         @include('front.contact.form', ['page_name' => $page->title])
-        <!- End of Contact form -->
+        <!-- End of Contact form -->
 
     </main>
 @endsection
