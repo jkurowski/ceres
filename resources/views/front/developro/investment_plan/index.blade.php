@@ -39,7 +39,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 col-submenu">
                     @include('front.investments.submenu', ['menuIds' => $investment->menu, 'activeMenuId' => 2])
                 </div>
             </div>

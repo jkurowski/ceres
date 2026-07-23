@@ -20,11 +20,11 @@
 
     <!-- CSS (non-blocking) -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=21072026c" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=21072026d" media="print" onload="this.media='all'">
 
     <!-- fallback dla no-js -->
     <noscript>
-        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=21072026c">
+        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}?v=21072026d">
     </noscript>
 
     <!-- Preloads -->

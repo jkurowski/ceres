@@ -7,10 +7,10 @@
     'imgSrc' => null,
 ])
 
-<section class="section-header">
+<section class="section-header pb-0 pb-xl-5">
     <div class="container">
         <div class="row flex-row-reverse">
-            <div class="col-6 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="section-header-content ps-xl-5">
                     @if($sectionSubTitle)
                         <h2><img src="https://ceres.test/img/square-point.svg" alt=""> {{ $sectionSubTitle }}</h2>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-xl-6 mt-5 mt-xl-0">
                 <img
                     src="{{ $imgSrc }}"
                     alt="{{ $imgAlt }}"

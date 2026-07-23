@@ -2303,6 +2303,10 @@ footer .social-media a:hover {
     padding: 6px;
     margin-bottom: -10px;
   }
+  #submenu nav a {
+    font-size: 17px;
+    padding: 30px 20px 10px;
+  }
 }
 /* end of 991.98 */
 @media (max-width: 767.98px) {
@@ -2377,6 +2381,10 @@ footer .social-media a:hover {
   .section-header .family-count h3 {
     font-size: 17px;
     line-height: 33px;
+  }
+  #submenu nav a {
+    font-size: 13px;
+    padding: 30px 20px 10px;
   }
 }
 /* end of 767.98 */
@@ -2519,6 +2527,14 @@ footer .social-media a:hover {
     width: 100% !important;
     justify-content: center;
     margin: 5px 0;
+  }
+  #submenu nav a {
+    font-size: 10px;
+    padding: 30px 10px 10px;
+    text-align: center;
+  }
+  .col-submenu {
+    padding: 0 !important;
   }
 }
 /* end of 575.98 */

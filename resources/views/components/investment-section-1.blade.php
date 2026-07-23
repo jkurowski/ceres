@@ -7,7 +7,7 @@
     'imgSrc' => null,
 ])
 
-<section class="section-header">
+<section class="section-header pb-0 pb-xl-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
