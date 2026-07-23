@@ -158,7 +158,7 @@
         <!-- End of Investment list -->
 
         <!-- Map -->
-        <section>
+        <section class="pt-0">
             <div class="container">
                 <div class="row section-header">
                     <div class="col-12">
