@@ -268,8 +268,11 @@
                 margin-bottom: 2px;
             }
         }
-        .leaflet-popup-content-wrapper {
-            border-radius: 4px;
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background: none;
+            color: #333;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
         }
         .leaflet-popup-tip-container {
             display: none;
