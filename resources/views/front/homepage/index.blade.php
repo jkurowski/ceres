@@ -310,8 +310,8 @@
         const invisibleIcon = L.divIcon({
             className: 'invisible-marker',
             html: '',
-            iconSize: [0, 0],
-            iconAnchor: [0, 0]
+            iconSize: [50, 50],
+            iconAnchor: [25, 50]
         });
 
         const markers = [];
