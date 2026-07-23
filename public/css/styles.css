@@ -2629,6 +2629,9 @@ footer .social-media a:hover {
     width: 14px;
     height: 14px;
   }
+  .offer-search.single-offer-search .bttn.bttn-xs {
+    font-size: 13px;
+  }
 }
 /* end of 359.98 */
 @media (max-width: 359.98px) {
