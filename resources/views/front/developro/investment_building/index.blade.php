@@ -31,7 +31,7 @@
 
 @section('content')
     <main>
-        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '.$building->name, 'pageDesc' => $investment->name, 'class' => 'sm'])
+        @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '.$building->name, 'pageDesc' => $investment->entry_content, 'class' => 'sm'])
 
         <div class="container">
             <div class="row">

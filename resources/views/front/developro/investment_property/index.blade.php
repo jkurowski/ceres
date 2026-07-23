@@ -35,7 +35,7 @@
             'page' => $page,
             'header' => asset('img/pageheader.jpg'),
             'h1' => $investment->name .' - '. $property->name,
-            'pageDesc' => $investment->name,
+            'pageDesc' => $investment->entry_content,
             'class' => 'sm'
         ])
 
