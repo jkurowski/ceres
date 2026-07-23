@@ -339,7 +339,7 @@
 
         if (markers.length > 0) {
             const group = new L.featureGroup(markers);
-            map.fitBounds(group.getBounds().pad(0.1));
+            map.fitBounds(group.getBounds().pad(0.4));
         }
     </script>
 @endpush
