@@ -1,17 +1,17 @@
 <section class="offer-search pt-0 pb-4 single-offer-search">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12 col-xl-8">
                 <form
                     action="{{ Route::is(['developro.plan', 'developro.page', 'developro.mockup', 'developro.investment.news', 'developro.investment.news.show', 'developro.show']) ? route('developro.plan', $investment->slug) . '#properties' : '#properties' }}"
-                    class="search-form p-4"
+                    class="search-form p-2 p-md-4"
                     autocomplete="off"
                     method="get"
                 >
-                    <div class="container-fluid d-block d-sm-none">
+                    <div class="container-fluid d-block d-md-none">
                         <div class="row row-gap-3 py-3 row-button">
                             <div class="col-12">
-                                <button type="button" id="toggleSearchform" onclick="toggleSearch()">Pokaż / ukryj wyszukiwarkę</button>
+                                <button type="button" id="toggleSearchform" class="bttn bttn-arrow bttn-xs bttn-gold d-inline-flex w-100 justify-content-center" onclick="toggleSearch()">Pokaż / ukryj wyszukiwarkę</button>
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                         <p class="col-12 w-100 text-uppercase mb-0 d-none">Wyszukiwarka</p>
                         @if($investment->room_range)
                             @php $rooms = explode(',', $investment->room_range) @endphp
-                            <div class="@if($status != 3) col @else @if(!isset($is_floor)) col-12 col-sm-6 col-lg-3 @else col-12 col-lg-6 @endif @endif">
+                            <div class="@if($status != 3) col-12 col-md @else @if(!isset($is_floor)) col-12 col-md-6 col-lg-3 @else col-12 col-lg-6 @endif @endif">
                                 <div class="search-field">
                                     <label for="rooms">Pokoje</label>
                                     <div class="dropdown mt-2">
@@ -50,7 +50,7 @@
                                         : $selectedFloor->name;
                                 }
                             @endphp
-                            <div class="@if($status != 3) col @else col-12 col-sm-6 col-lg-3 @endif">
+                            <div class="@if($status != 3) col-12 col-md mt-3 mt-md-0 @else col-12 col-mb-6 col-lg-3 @endif">
                                 <div class="search-field">
                                     <label for="floors">Piętro</label>
                                     <div class="dropdown mt-2">
@@ -72,7 +72,7 @@
                                 $statusLabels = [1 => 'Na sprzedaż', 2 => 'Rezerwacja', 3 => 'Sprzedane'];
                                 $statusLabel = $statusLabels[(int) request()->input('status')] ?? 'Wszystkie';
                             @endphp
-                            <div class="col">
+                            <div class="col-12 col-md mt-3 mt-md-0">
                                 <div class="search-field border-0">
                                     <label for="status">Status</label>
                                     <div class="dropdown mt-2">
