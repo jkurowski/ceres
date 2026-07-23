@@ -19,7 +19,9 @@ class InvestmentSectionService
         }
 
         $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
-        $file->storeAs('sections', $name, 'investment_uploads');
+
+        File::ensureDirectoryExists(public_path('investment/sections'));
+        $file->move(public_path('investment/sections'), $name);
 
         $file_path = public_path('investment/sections/' . $name);
         Image::make($file_path)->save($file_path);

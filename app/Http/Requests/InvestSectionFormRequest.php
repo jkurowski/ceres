@@ -23,12 +23,12 @@ class InvestSectionFormRequest extends FormRequest
     {
         return [
             'investment_id' => 'integer',
+            'columns' => 'integer',
+            'type' => 'integer',
             'lock' => 'boolean',
             'title' => 'nullable|string|min:2|max:190',
             'subtitle' => 'nullable|string|min:2|max:190',
             'content' => 'nullable|string|min:5',
-            'code' => 'nullable|string|min:5',
-            'fields' => '',
             'file_alt' => ''
         ];
     }

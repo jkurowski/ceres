@@ -32,18 +32,18 @@
 @section('content')
     <main>
         @include('layouts.partials.page-header', ['page' => $page, 'header' => asset('img/pageheader.jpg'), 'h1' => $investment->name .' - '.$building->name, 'pageDesc' => $investment->name, 'class' => 'sm'])
-        @if(1 == 2)
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @include('front.investments.submenu', ['menuIds' => $investment->menu, 'activeMenuId' => 2])
+                    @include('front.investments.submenu', ['menuIds' => $investment->menu])
                 </div>
             </div>
         </div>
-        @endif
+
         <div class="container pt-5">
-            <div id="planNav" class="row">
-                <div class="col-6 col-sm-4">
+            <div id="planNav" class="row justify-content-center">
+                <div class="col-4">
                     @if($prev_building)
                         <a href="{{route('developro.building', [$investment->slug, $prev_building, 'buildingSlug' => Str::slug($prev_building->name)])}}?status=1#submenu" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">
                             {{$prev_building->name}}
@@ -51,11 +51,7 @@
                     @endif
                 </div>
 
-                <div class="col-12 col-sm-4 text-center order-first order-sm-0">
-                    <a href="{{route('developro.plan', $investment->slug)}}?status=1#submenu" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">Plan inwestycji</a>
-                </div>
-
-                <div class="col-6 col-sm-4 text-end">
+                <div class="col-4 text-end">
                     @if($next_building)
                         <a href="{{route('developro.building', [$investment->slug, $next_building, 'buildingSlug' => Str::slug($next_building->name)])}}?status=1#submenu" class="bttn bttn-arrow bttn-sm bttn-gold d-inline-flex">
                             {{$next_building->name}}

@@ -1370,9 +1370,34 @@ footer {
 }
 
 #submenu {
-    padding: 40px 0;
+    background: #f2eee3;
+
+    border-radius: 16px;
+    margin-top: -20px;
     nav {
         background: transparent;
+        a {
+            color: #75543f;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 17px;
+            display: block;
+            padding: 40px 40px 20px;
+            transition: background 0.1s ease-in-out 0s;
+            &:hover {
+                background: #dfd9c8;
+            }
+        }
+        .active {
+            a {
+                background: #faf7f5;
+            }
+        }
+    }
+    &.property-menu {
+        a {
+            padding: 20px 40px 20px;
+        }
     }
 }
 

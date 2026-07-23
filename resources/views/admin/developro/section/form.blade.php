@@ -21,86 +21,78 @@
                         <div class="card mt-3">
                             @include('form-elements.back-route-button')
                             <div class="card-body control-col12">
-
-                            @php
-                                // Use the fields from the model unless you're editing the section, in which case, use a default set
-                                $visibleFields = Route::is('admin.developro.investment.section.edit')
-                                                ? $entry->fields
-                                                : ['title', 'subtitle', 'file', 'file_alt', 'content', 'content_editor', 'code'];
-                            @endphp
-
-                            @if(!$entry->lock)
                                 <div class="row w-100 form-group">
-                                    @include('form-elements.html-select', ['label' => 'Blokada', 'name' => 'lock', 'selected' => $entry->lock, 'select' => ['1' => 'Tak', '0' => 'Nie']])
-                                </div>
-                                <div class="row w-100 form-group">
-                                    @include('form-elements.html-checkbox-multi', [
-                                        'name' => 'fields',
-                                        'label' => 'Dostępne sekcje',
-                                        'options' => [
-                                            'title' => 'Tytuł',
-                                            'subtitle' => 'Sub-tytul',
-                                            'file' => 'Plik',
-                                            'file_alt' => 'Alt dla obrazka',
-                                            'content' => 'Treść',
-                                            'content_editor' => 'Edytor treść',
-                                            'code' => 'Kod HTML',
-                                        ],
-                                        'value' => Route::is('admin.developro.investment.section.edit')
-                                                ? $entry->fields
-                                                : [],
-                                        'required' => true,
+                                    @include('form-elements.html-select', [
+                                        'label' => 'Typ sekcji',
+                                        'name' => 'type',
+                                        'selected' => $entry->type,
+                                        'select' => [
+                                            1 => 'Pełna szerokość',
+                                            2 => 'Tekst z lewej, obrazek z prawej',
+                                            3 => 'Tekst z prawej, obrazek z lewej'
+                                        ]
                                     ])
                                 </div>
-                                @endif
 
-                                @if(in_array('title', $visibleFields))
-                                    <div class="row w-100 form-group">
-                                        @include('form-elements.html-input-text', ['label' => 'Tytuł', 'name' => 'title', 'value' => $entry->title])
-                                    </div>
-                                @endif
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Tytuł', 'name' => 'title', 'value' => $entry->title])
+                                </div>
 
-                                @if(in_array('subtitle', $visibleFields))
                                 <div class="row w-100 form-group">
                                     @include('form-elements.html-input-text', ['label' => 'Sub-tytuł', 'name' => 'subtitle', 'value' => $entry->subtitle])
                                 </div>
-                                @endif
 
-                                @if(in_array('file', $visibleFields))
-                                <div class="row w-100 form-group">
+                                <div id="imageSize" class="row w-100 form-group">
                                     @include('form-elements.html-input-file', [
                                         'label' => 'Zdjęcie',
+                                        'sublabel' => 'Wymiary obrazka',
                                         'name' => 'file',
                                         'file' => $entry->file,
                                         'file_preview' => config('images.investment.section_preview_file_path')
                                     ])
                                 </div>
-                                @endif
 
-                                @if(in_array('file', $visibleFields))
-                                    <div class="row w-100 form-group">
-                                        @include('form-elements.html-input-text', ['label' => 'Alt dla obrazka', 'name' => 'file_alt', 'value' => $entry->file_alt])
-                                    </div>
-                                @endif
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-input-text', ['label' => 'Alt dla obrazka', 'name' => 'file_alt', 'value' => $entry->file_alt])
+                                </div>
 
-                                @if(in_array('content', $visibleFields))
-                                    <div class="row w-100 form-group">
-                                        @include('form-elements.textarea-fullwidth', ['label' => 'Treść', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce'])
-                                    </div>
-                                @endif
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.html-select', ['label' => 'Ilość kolumn w treści', 'name' => 'columns', 'selected' => $entry->columns, 'select' => [1 => '1', 2 => '2']])
+                                </div>
 
-                                @if(in_array('code', $visibleFields))
-                                    <div class="row w-100 form-group">
-                                        @include('form-elements.textarea-fullwidth', ['label' => 'Treść lub kod html', 'name' => 'code', 'value' => $entry->code, 'rows' => 11])
-                                    </div>
-                                @endif
+                                <div class="row w-100 form-group">
+                                    @include('form-elements.textarea-fullwidth', ['label' => 'Treść', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce'])
+                                </div>
                             </div>
                         </div>
                     </div>
                     <input type="hidden" name="investment_id" value="{{$investment->id}}">
                     @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
                 </form>
-        @if(in_array('content_editor', $visibleFields))
-            @include('form-elements.tintmce')
-        @endif
-        @endsection
+                @include('form-elements.tintmce')
+                @endsection
+                @push('scripts')
+                    <script>
+                        document.addEventListener("DOMContentLoaded", updateSpan);
+                        document.getElementById("typeSelect").addEventListener("change", updateSpan);
+
+                        function updateSpan() {
+                            const value = document.getElementById("typeSelect").value;
+                            const span = document.querySelector("#imageSize span");
+
+                            switch (value) {
+                                case "1":
+                                    span.textContent = "Szerokość obrazka: 1380px";
+                                    break;
+                                case "2":
+                                    span.textContent = "Szerokość obrazka: 1024px";
+                                    break;
+                                case "3":
+                                    span.textContent = "Szerokość obrazka: 1024px";
+                                    break;
+                                default:
+                                    span.textContent = "Brak opcji";
+                            }
+                        }
+                    </script>
+        @endpush

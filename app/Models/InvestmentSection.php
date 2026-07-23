@@ -13,24 +13,32 @@ class InvestmentSection extends Model
      */
     protected $fillable = [
         'investment_id',
-        'fields',
+        'columns',
+        'type',
         'title',
         'subtitle',
         'content',
-        'code',
         'file',
         'file_alt',
-        'lock',
         'sort'
     ];
 
-    public function getFieldsAttribute($value)
+    protected static function boot()
     {
-        return json_decode($value, true) ?? [];
-    }
+        parent::boot();
 
-    public function setFieldsAttribute($value)
-    {
-        $this->attributes['fields'] = json_encode($value);
+        static::creating(function ($model) {
+
+            // jeśli sort już jest ustawiony → nic nie rób
+            if (!empty($model->sort)) {
+                return;
+            }
+
+            // pobierz ostatni sort dla tej inwestycji
+            $lastSort = self::where('investment_id', $model->investment_id)
+                ->max('sort');
+
+            $model->sort = $lastSort ? $lastSort + 1 : 1;
+        });
     }
 }

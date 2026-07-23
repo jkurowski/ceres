@@ -25,6 +25,23 @@
             </div>
         </div>
     </div>
+    <div id="aboutInvest"></div>
+    @foreach($sections as $section)
+        <x-dynamic-component
+            :component="'investment-section-' . $section->type"
+            :sectionTitle="$section->title"
+            :sectionSubTitle="$section->subtitle"
+            :columns="$section->columns"
+            :content="$section->content"
+            :imgAlt="$section->file_alt"
+            :imgSrc="asset('investment/sections/'.$section->file)"
+        />
+    @endforeach
+
+    <!-- Contact form -->
+    @include('front.contact.form', ['page_name' => $investment->name])
+    <!-- End of Contact form -->
+
 </main>
 @endsection
 @push('scripts')

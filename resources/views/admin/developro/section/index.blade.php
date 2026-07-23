@@ -30,24 +30,24 @@
                             <tr id="recordsArray_{{ $item->id }}">
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->subtitle }}</td>
-                                <td>{{ $item->position }}</td>
+                                <td>{{ $item->sort }}</td>
                                 <td>
-                                @if($item->file)
+                                    @if($item->file)
                                         <img src="{{ asset('investment/sections/'.$item->file) }}" alt="" style="max-width:200px">
-                                @endif
+                                    @endif
                                 </td>
                                 <td class="text-center">{{ $item->created_at }}</td>
                                 <td class="text-center">{{ $item->updated_at }}</td>
                                 <td class="option-120 text-end">
                                     <div class="btn-group">
-                                        <span class="btn action-button move-button me-1 d-none"><i class="fe-move"></i></span>
+                                        <span class="btn action-button move-button me-1"><i class="fe-move"></i></span>
                                         <a href="{{route('admin.developro.investment.section.edit', [$investment, $item->id])}}" class="btn action-button me-1" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Edytuj wpis"><i class="fe-edit"></i></a>
                                         @if(!$item->lock)
-                                        <form method="POST" action="{{route('admin.developro.investment.section.destroy', [$investment, $item->id])}}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn action-button confirm" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Usuń wpis" data-id="{{ $item->id }}"><i class="fe-trash-2"></i></button>
-                                        </form>
+                                            <form method="POST" action="{{route('admin.developro.investment.section.destroy', [$investment, $item->id])}}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn action-button confirm" data-bs-toggle="tooltip" data-placement="top" data-bs-title="Usuń wpis" data-id="{{ $item->id }}"><i class="fe-trash-2"></i></button>
+                                            </form>
                                         @endif
                                     </div>
                                 </td>
@@ -72,4 +72,3 @@
 @push('scripts')
     <script type="text/javascript">$(document).ready(function(){$("#sortable tbody.content").sortuj('{{route('admin.section.sort')}}');});</script>
 @endpush
-

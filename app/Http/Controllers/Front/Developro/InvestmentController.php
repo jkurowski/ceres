@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Investment;
 
 // CMS
+use App\Models\InvestmentSection;
 use App\Models\Page;
 
 class InvestmentController extends Controller
@@ -26,17 +27,21 @@ class InvestmentController extends Controller
             ->firstOrFail();
         $page = Page::find($this->pageId);
 
+        $sections = InvestmentSection::where('investment_id', $investment->id)->orderBy('sort')->get();
+
         if($investment->status == 1){
             $images = $investment->images()->get();
             return view('front.developro.investment.show', [
                 'investment' => $investment,
                 'page' => $page,
-                'images' => $images
+                'images' => $images,
+                'sections' => $sections,
             ]);
         } else if($investment->status == 2){
             return view('front.developro.completed.show', [
                 'investment' => $investment,
-                'page' => $page
+                'page' => $page,
+                'sections' => $sections,
             ]);
         } else {
             return view('front.investments.'.$slug.'.index', [

@@ -1422,10 +1422,30 @@ footer .social-media a:hover {
   text-decoration: underline;
 }
 #submenu {
-  padding: 40px 0;
+  background: #f2eee3;
+  border-radius: 16px;
+  margin-top: -20px;
 }
 #submenu nav {
   background: transparent;
+}
+#submenu nav a {
+  color: #75543f;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 17px;
+  display: block;
+  padding: 40px 40px 20px;
+  transition: background 0.1s ease-in-out 0s;
+}
+#submenu nav a:hover {
+  background: #dfd9c8;
+}
+#submenu nav .active a {
+  background: #faf7f5;
+}
+#submenu.property-menu a {
+  padding: 20px 40px 20px;
 }
 .plan-info {
   background: #75543f;

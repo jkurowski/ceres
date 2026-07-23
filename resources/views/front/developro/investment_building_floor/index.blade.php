@@ -38,15 +38,15 @@
             'pageDesc' => $investment->name,
             'class' => 'sm'
         ])
-        @if(1 == 2)
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @include('front.investments.submenu', ['menuIds' => $investment->menu, 'activeMenuId' => 2])
+                    @include('front.investments.submenu', ['menuIds' => $investment->menu])
                 </div>
             </div>
         </div>
-        @endif
+
         <div class="container pt-5">
             <div id="planNav" class="row">
                 <div class="col-6 col-sm-4">
