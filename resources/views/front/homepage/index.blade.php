@@ -322,10 +322,11 @@
                     $coords = explode(',', $p->map_cords);
                     $url = ($p->id == 1) ? 'https://www.sosnowy-jablonna.pl' : route('developro.plan', $p->slug);
                     $target = ($p->id == 1) ? '_blank' : '_self';
+                    $name = ($p->id == 1) ? 'Sosnowy Zakątek' : 'Osiedle Sprawna';
                 @endphp
                 @if(count($coords) == 2)
                     const marker{{ $p->id }} = L.marker([{{ trim($coords[0]) }}, {{ trim($coords[1]) }}], {icon: invisibleIcon}).addTo(map)
-                        .bindTooltip('<b>{{ $p->name }}</b>', {permanent: true, direction: 'top', className: 'marker-tooltip', interactive: true, offset: [0, -10]})
+                        .bindTooltip('<b>{{ $name }}</b>', {permanent: true, direction: 'top', className: 'marker-tooltip', interactive: true, offset: [0, -10]})
                         .bindPopup('<a href="{{ $url }}" target="{{ $target }}" class="bttn bttn-sm bttn-gold mt-3">Odwiedź inwestycję</a>');
 
                     marker{{ $p->id }}.on('tooltipclick', function() {
